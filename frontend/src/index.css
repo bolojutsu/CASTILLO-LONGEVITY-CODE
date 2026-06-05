@@ -1,0 +1,971 @@
+/* Global Reset Configuration */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #FBFBFA;
+  color: #1A1A1A;
+  overflow-x: hidden;
+}
+
+.Hero,
+.About,
+.Bio,
+.Testimonies,
+.HealthTips {
+  scroll-margin-top: 90px; 
+}
+
+/* Header Styles */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8%;
+  background-color: rgba(251, 251, 250, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: 100;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+}
+
+header .logo {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1A1A1A;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 600;
+  color: #555555;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #1A1A1A;
+}
+
+/* Distinct execution for the navigation call-to-action button */
+.nav-links a.nav-cta {
+  background-color: #1A1A1A;
+  color: #FBFBFA;
+  padding: 10px 20px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-links a.nav-cta:hover {
+  background-color: #333333;
+}
+
+/* Hero Styles */
+.Hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("./images/hero-background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding: 0 8%;
+}
+
+/* Premium Light-Mode Floating Card Context over background-image */
+.hero-content {
+  background-color: rgba(251, 251, 250, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 48px;
+  border-radius: 8px;
+  max-width: 620px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  animation: fadeInLayout 0.8s ease-out;
+}
+
+.hero-content h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1A1A1A;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 15px;
+  font-weight: 400;
+  color: #4A4A4A;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+/* Interactive Interactive Elements */
+.hero-btn {
+  background-color: #1A1A1A;
+  color: #FBFBFA;
+  border: 1px solid #1A1A1A;
+  padding: 16px 36px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+}
+
+.hero-btn:hover {
+  background-color: transparent;
+  color: #1A1A1A;
+  transform: translateY(-2px);
+}
+
+@keyframes fadeInLayout {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* About Section Styles */
+.About {
+  width: 100%;
+  padding: 120px 8%;
+  background-color: #FFFFFF; /* Pure white contrast against the off-white body */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  max-width: 1200px;
+  align-items: center;
+}
+
+/* Asymmetric profile layout/image placeholder */
+.about-image-placeholder {
+  width: 100%;
+  height: 500px;
+  background-color: #F5F5F3;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.image-fallback {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #A0A09A;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-subtitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: #8A8A82;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.about-content h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1A1A1A;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+}
+
+.about-content p {
+  font-size: 15px;
+  font-weight: 400;
+  color: #555555;
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+
+.about-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive adjustment for smaller viewports */
+@media (max-width: 968px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .about-image-placeholder {
+    height: 350px;
+  }
+}
+
+/* Enhanced Typographic Styling for Inner Elements */
+.about-content .lead-text {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #2A2A2A;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+/* Consultation Section 1 - Highlight Box Style */
+.consultation-section1 {
+  margin-top: 48px;
+  padding: 32px;
+  background-color: #FBFBFA;
+  border-left: 3px solid #1A1A1A;
+  border-radius: 0 8px 8px 0;
+}
+
+.consultation-section1 h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1A1A1A;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.consultation-section1 p {
+  font-size: 14.5px;
+  color: #555555;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* Consultation Section 2 - Grid & Assurances */
+.consultation-section2 {
+  margin-top: 56px;
+}
+
+.consultation-section2 h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1A1A1A;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+}
+
+.section2-intro {
+  font-size: 15px;
+  color: #777772;
+  font-style: italic;
+  margin-bottom: 36px;
+}
+
+/* Modern 3-Column Grid Layout for Showcasing */
+.showcasing {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.showcasing-card {
+  background-color: #FBFBFA;
+  padding: 28px 24px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.showcasing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
+  background-color: #FFFFFF;
+}
+
+/* Structural asset space for future UI Icons */
+.card-icon-placeholder {
+  width: 36px;
+  height: 36px;
+  background-color: rgba(26, 26, 26, 0.05);
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.showcasing-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1A1A1A;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.showcasing-card p {
+  font-size: 13.5px;
+  color: #666661;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* Responsive Overrides for Showcasing Grid Elements */
+@media (max-width: 1200px) {
+  .showcasing {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* Testimonials Section Layout */
+.Testimonies {
+  width: 100%;
+  padding: 120px 8%;
+  background-color: #FBFBFA; /* Warm off-white to contrast against the pure white About block */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.testimonies-container {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.testimonies-subtitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: #8A8A82;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.testimonies-container h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1A1A1A;
+  letter-spacing: 1px;
+  margin-bottom: 64px;
+  text-transform: uppercase;
+}
+
+/* Slider Machinery Layout */
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.carousel-viewport {
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.carousel-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Individual Slide Formats */
+.testimonial-slide {
+  flex: 0 0 100%;
+  max-width: 100%;
+  padding: 0 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.testimonial-quote {
+  font-size: 20px;
+  font-weight: 400;
+  color: #333333;
+  line-height: 1.8;
+  font-style: italic;
+  margin-bottom: 32px;
+  max-width: 720px;
+}
+
+.testimonial-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1A1A1A;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.testimonial-role {
+  font-size: 13px;
+  color: #777772;
+  font-weight: 500;
+}
+
+/* Minimalist Hardware Controls */
+.carousel-arrow {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: #A0A09A;
+  cursor: pointer;
+  padding: 10px;
+  transition: color 0.3s ease, transform 0.2s ease;
+  z-index: 10;
+}
+
+.carousel-arrow:hover {
+  color: #1A1A1A;
+}
+
+.prev-arrow:active { transform: translateX(-2px); }
+.next-arrow:active { transform: translateX(2px); }
+
+/* Pagination Dots Indicator Units */
+.carousel-dots-container {
+  display: flex;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background-color: #D6D6D2;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-dot:hover {
+  background-color: #8A8A82;
+}
+
+.carousel-dot.dot-active {
+  background-color: #1A1A1A;
+  transform: scale(1.2);
+}
+
+/* Viewport Adjustments for Responsive Display */
+@media (max-width: 768px) {
+  .testimonial-slide {
+    padding: 0 20px;
+  }
+  
+  .testimonial-quote {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .carousel-arrow {
+    display: none; /* Hide side arrows on small mobile devices to make sliding finger gestures clean */
+  }
+}
+
+
+
+/* Bio Section Layout Configuration */
+.Bio {
+  width: 100%;
+  padding: 120px 8%;
+  background-color: #FFFFFF; /* Clean background transition */
+  display: flex;
+  justify-content: center;
+}
+
+.bio-container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.bio-header {
+  /* Reset header placement inside the layout flow */
+  position: relative;
+  height: auto;
+  border-bottom: none;
+  box-shadow: none;
+  padding: 0;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.bio-subtitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: #8A8A82;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.bio-header h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1A1A1A;
+  letter-spacing: 0.5px;
+  text-transform: none;
+  text-align: left;
+  line-height: 1.3;
+  max-width: 800px;
+}
+
+/* Two-Column Masonry/Grid Flow for Long Text Blocks */
+.bio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px;
+}
+
+.bio-card h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1A1A1A;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+
+.bio-card p {
+  font-size: 14.5px;
+  color: #555555;
+  line-height: 1.75;
+}
+
+/* Responsive adjustment for single column layout on smaller screens */
+@media (max-width: 968px) {
+  .bio-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  
+  .bio-header h1 {
+    font-size: 28px;
+  }
+}
+
+/* Premium Light-Mode Footer Styles */
+.site-footer {
+  background-color: #FFFFFF; /* Matches the pure white surface theme */
+  padding: 80px 8% 40px 8%;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  width: 100%;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.footer-brand h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1A1A1A;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  color: #666661;
+  line-height: 1.6;
+  max-width: 380px;
+}
+
+.footer-links-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 100px;
+}
+
+.footer-column h4 {
+  font-size: 12px;
+  font-weight: 700;
+  color: #8A8A82;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+  font-size: 13.5px;
+  color: #555555;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-column ul li a:hover {
+  color: #1A1A1A;
+}
+
+/* Bottom Metadata Track */
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
+  font-size: 12px;
+  color: #A0A09A;
+  letter-spacing: 0.5px;
+}
+
+.footer-bottom .footer-legal {
+  font-weight: 500;
+}
+
+/* Media Query Adaptations for Mobile viewports */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+  }
+  
+  .footer-links-group {
+    justify-content: flex-start;
+    gap: 60px;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+/* ==========================================================================
+   HealthTips Section Styles[cite: 11]
+   ========================================================================== */
+   .HealthTips {
+    width: 100%;
+    padding: 140px 8%;
+    background-color: #FFFFFF; /* White crisp section layout breakout */
+    scroll-margin-top: 90px;   /* Retains flawless top spacing for the navbar */
+  }
+  
+  .healthtips-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .healthtips-subtitle {
+    font-size: 12px;
+    font-weight: 700;
+    color: #63756F; /* Muted Sage */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 16px;
+  }
+  
+  .healthtips-header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #12201C;
+    letter-spacing: 0.5px;
+    margin-bottom: 40px;
+  }
+  
+  .healthtips-intro {
+    max-width: 850px;
+    margin-bottom: 60px;
+    padding-left: 24px;
+    border-left: 3px solid #16372E; /* Brand accent vertical line */
+  }
+  
+  .healthtips-intro h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #16372E;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  
+  .healthtips-intro p {
+    font-size: 16px;
+    color: #4A5753;
+    line-height: 1.8;
+  }
+  
+  /* Asymmetric Clinical Layout Grid */
+  .healthtips-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 64px;
+    align-items: stretch;
+  }
+  
+  .healthtips-content h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #12201C;
+    margin-bottom: 18px;
+    line-height: 1.4;
+  }
+  
+  .healthtips-content p {
+    font-size: 15px;
+    color: #4A5753;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  
+  .healthtips-content p:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Luxury Abstract Structural Graphic */
+  .healthtips-graphic {
+    background: linear-gradient(135deg, #F0F3F1 0%, #E2E8E6 100%);
+    border-radius: 4px;
+    border: 1px solid rgba(18, 32, 28, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .graphic-overlay span {
+    font-size: 11px;
+    font-weight: 600;
+    color: #63756F;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  /* Responsive Overrides */
+  @media (max-width: 992px) {
+    .healthtips-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .healthtips-graphic {
+      min-height: 280px;
+      order: -1; /* Pushes graphic above text on small responsive viewports */
+    }
+  }
+
+/* ==========================================================================
+   Contact Form Structural Layout
+   ========================================================================== */
+   .Contact {
+    width: 100%;
+    padding: 140px 8%;
+    background-color: #F8FAF9; /* Premium Alabaster shade balance */
+    scroll-margin-top: 90px;
+  }
+  
+  .contact-container {
+    max-width: 650px;
+    margin: 0 auto;
+  }
+  
+  .contact-subtitle {
+    font-size: 12px;
+    font-weight: 700;
+    color: #63756F;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  
+  .contact-header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #12201C;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  
+  .contact-header p {
+    font-size: 15px;
+    color: #4A5753;
+    line-height: 1.8;
+    margin-bottom: 48px;
+    text-align: center;
+  }
+  
+  /* Translucent Clinical Dashboard Cards Form Container */
+  .contact-form {
+    background-color: #FFFFFF;
+    padding: 48px;
+    border-radius: 4px;
+    border: 1px solid rgba(18, 32, 28, 0.05);
+    box-shadow: 0 20px 40px rgba(18, 32, 28, 0.02);
+  }
+  
+  .form-group {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #12201C;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  
+  /* Elite Input Boxes styling */
+  .form-group input,
+  .form-group textarea {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    padding: 14px 16px;
+    background-color: #F8FAF9;
+    border: 1px solid rgba(18, 32, 28, 0.08);
+    border-radius: 4px;
+    color: #12201C;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    outline: none;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #16372E; /* Glow transition to Bio-emerald on selection focus */
+    background-color: #FFFFFF;
+  }
+  
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: #A3B8B2;
+  }
+  
+  /* Submit Action Triggers */
+  .form-submit-btn {
+    width: 100%;
+    background-color: #12201C;
+    color: #F8FAF9;
+    border: none;
+    padding: 16px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 12px;
+  }
+  
+  .form-submit-btn:hover {
+    background-color: #16372E;
+  }
+  
+  .form-submit-btn:disabled {
+    background-color: #63756F;
+    cursor: not-allowed;
+  }
+  
+  /* Async Submission Interaction States */
+  .form-feedback {
+    margin-top: 20px;
+    padding: 14px;
+    border-radius: 4px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    text-align: center;
+  }
+  
+  .feedback-loading {
+    background-color: rgba(99, 117, 111, 0.08);
+    color: #63756F;
+    border: 1px solid rgba(99, 117, 111, 0.2);
+  }
+  
+  .feedback-success {
+    background-color: rgba(22, 55, 46, 0.06);
+    color: #16372E;
+    border: 1px solid rgba(22, 55, 46, 0.15);
+  }
+  
+  .feedback-error {
+    background-color: rgba(214, 40, 40, 0.05);
+    color: #D62828;
+    border: 1px solid rgba(214, 40, 40, 0.15);
+  }
