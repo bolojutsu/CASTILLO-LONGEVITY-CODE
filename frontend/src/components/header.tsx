@@ -10,7 +10,7 @@ const Header = () => {
                     <a href="#contact">Contact</a>
                     <a href="#bio">Bio</a>
                     <a href="#tips">Health Tips</a>
-                    <a href="#book" className="nav-cta">Book us</a>
+                   
                 </div>
             </nav>
         </header>

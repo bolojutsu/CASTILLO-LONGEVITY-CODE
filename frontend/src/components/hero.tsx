@@ -10,7 +10,7 @@ const Hero = () => {
                     high-quality treatments that address the most pressing healthcare challenges 
                     and ensure a healthier future for all.
                 </p>
-                <button className="hero-btn">Book us</button>
+                <button className="hero-btn">Contact US</button>
             </div>
         </section>
     );
