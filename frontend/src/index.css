@@ -89,6 +89,32 @@ header .logo {
   background-color: #333333;
 }
 
+
+/* Mobile Header Clean-up */
+@media (max-width: 768px) {
+  header {
+    height: auto;
+    padding: 15px 5%;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  header .logo {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .nav-links {
+    gap: 16px; /* Shrink space between links */
+    flex-wrap: wrap; /* Allows links to drop to a new line gracefully instead of squishing */
+    justify-content: center;
+  }
+
+  .nav-links a {
+    font-size: 11px; /* Slightly smaller typography for mobile fitting */
+  }
+}
+
 /* Hero Styles */
 .Hero {
   position: relative;
