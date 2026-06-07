@@ -73,7 +73,7 @@ const ChatWidget = () => {
           <div className="cw-header">
             <div className="cw-avatar">⚡</div>
             <div className="cw-header-info">
-              <div className="cw-header-name">Devin's Assistant</div>
+              <div className="cw-header-name">Enrique's Assistant</div>
               <div className="cw-header-status">
                 <span className="cw-status-dot" />
                 Online — ask me anything
@@ -86,7 +86,7 @@ const ChatWidget = () => {
             {!started ? (
               <div className="cw-welcome">
                 <div className="cw-welcome-icon">👋</div>
-                <div className="cw-welcome-title">Hey, I'm Devin's AI</div>
+                <div className="cw-welcome-title">Hey, I'm Enrique's AI</div>
                 <p className="cw-welcome-sub">
                   Ask me about his services, projects, or how to start working together.
                 </p>
