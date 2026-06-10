@@ -1,0 +1,8 @@
+# Sensitive Environment Keys
+.env
+
+# Python Compiled Bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
