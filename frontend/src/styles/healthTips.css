@@ -1,0 +1,109 @@
+/* HealthTips Section Styles */
+.HealthTips {
+    width: 100%;
+    padding: 140px 8%;
+    background-color: #FFFFFF;
+    scroll-margin-top: 90px;
+  }
+  
+  .healthtips-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .healthtips-subtitle {
+    font-size: 12px;
+    font-weight: 700;
+    color: #63756F;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 16px;
+  }
+  
+  .healthtips-header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #12201C;
+    letter-spacing: 0.5px;
+    margin-bottom: 40px;
+  }
+  
+  .healthtips-intro {
+    max-width: 850px;
+    margin-bottom: 60px;
+    padding-left: 24px;
+    border-left: 3px solid #16372E;
+  }
+  
+  .healthtips-intro h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #16372E;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  
+  .healthtips-intro p {
+    font-size: 16px;
+    color: #4A5753;
+    line-height: 1.8;
+  }
+  
+  .healthtips-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 64px;
+    align-items: stretch;
+  }
+  
+  .healthtips-content h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #12201C;
+    margin-bottom: 18px;
+    line-height: 1.4;
+  }
+  
+  .healthtips-content p {
+    font-size: 15px;
+    color: #4A5753;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  
+  .healthtips-content p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .healthtips-graphic {
+    background: linear-gradient(135deg, #F0F3F1 0%, #E2E8E6 100%);
+    border-radius: 4px;
+    border: 1px solid rgba(18, 32, 28, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .graphic-overlay span {
+    font-size: 11px;
+    font-weight: 600;
+    color: #63756F;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  @media (max-width: 992px) {
+    .healthtips-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .healthtips-graphic {
+      min-height: 280px;
+      order: -1;
+    }
+  }

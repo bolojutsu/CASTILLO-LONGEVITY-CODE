@@ -1,0 +1,139 @@
+/* Contact Form Structural Layout */
+.Contact {
+    width: 100%;
+    padding: 140px 8%;
+    background-color: #F8FAF9;
+    scroll-margin-top: 90px;
+  }
+  
+  .contact-container {
+    max-width: 650px;
+    margin: 0 auto;
+  }
+  
+  .contact-subtitle {
+    font-size: 12px;
+    font-weight: 700;
+    color: #63756F;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  
+  .contact-header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #12201C;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  
+  .contact-header p {
+    font-size: 15px;
+    color: #4A5753;
+    line-height: 1.8;
+    margin-bottom: 48px;
+    text-align: center;
+  }
+  
+  .contact-form {
+    background-color: #FFFFFF;
+    padding: 48px;
+    border-radius: 4px;
+    border: 1px solid rgba(18, 32, 28, 0.05);
+    box-shadow: 0 20px 40px rgba(18, 32, 28, 0.02);
+  }
+  
+  .form-group {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #12201C;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    padding: 14px 16px;
+    background-color: #F8FAF9;
+    border: 1px solid rgba(18, 32, 28, 0.08);
+    border-radius: 4px;
+    color: #12201C;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    outline: none;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #16372E;
+    background-color: #FFFFFF;
+  }
+  
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: #A3B8B2;
+  }
+  
+  .form-submit-btn {
+    width: 100%;
+    background-color: #12201C;
+    color: #F8FAF9;
+    border: none;
+    padding: 16px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 12px;
+  }
+  
+  .form-submit-btn:hover {
+    background-color: #16372E;
+  }
+  
+  .form-submit-btn:disabled {
+    background-color: #63756F;
+    cursor: not-allowed;
+  }
+  
+  .form-feedback {
+    margin-top: 20px;
+    padding: 14px;
+    border-radius: 4px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    text-align: center;
+  }
+  
+  .feedback-loading {
+    background-color: rgba(99, 117, 111, 0.08);
+    color: #63756F;
+    border: 1px solid rgba(99, 117, 111, 0.2);
+  }
+  
+  .feedback-success {
+    background-color: rgba(22, 55, 46, 0.06);
+    color: #16372E;
+    border: 1px solid rgba(22, 55, 46, 0.15);
+  }
+  
+  .feedback-error {
+    background-color: rgba(214, 40, 40, 0.05);
+    color: #D62828;
+    border: 1px solid rgba(214, 40, 40, 0.15);
+  }

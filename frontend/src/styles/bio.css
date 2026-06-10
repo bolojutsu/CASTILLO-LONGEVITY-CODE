@@ -1,0 +1,76 @@
+/* Bio Section Layout Configuration */
+.Bio {
+    width: 100%;
+    padding: 120px 8%;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .bio-container {
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .bio-header {
+    position: relative;
+    height: auto;
+    border-bottom: none;
+    box-shadow: none;
+    padding: 0;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: transparent;
+  }
+  
+  .bio-subtitle {
+    font-size: 12px;
+    font-weight: 700;
+    color: #8A8A82;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  
+  .bio-header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1A1A1A;
+    letter-spacing: 0.5px;
+    text-transform: none;
+    text-align: left;
+    line-height: 1.3;
+    max-width: 800px;
+  }
+  
+  .bio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px;
+  }
+  
+  .bio-card h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1A1A1A;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+  }
+  
+  .bio-card p {
+    font-size: 14.5px;
+    color: #555555;
+    line-height: 1.75;
+  }
+  
+  @media (max-width: 968px) {
+    .bio-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .bio-header h1 {
+      font-size: 28px;
+    }
+  }

@@ -1,0 +1,186 @@
+/* About Section Styles */
+.About {
+    width: 100%;
+    padding: 120px 8%;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .about-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    max-width: 1200px;
+    align-items: center;
+  }
+  
+  .about-image-placeholder {
+    width: 100%;
+    height: 500px;
+    background-color: #F5F5F3;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+  }
+  
+  .image-fallback {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #A0A09A;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+  
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .about-subtitle {
+    font-size: 12px;
+    font-weight: 700;
+    color: #8A8A82;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  
+  .about-content h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1A1A1A;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+  }
+  
+  .about-content p {
+    font-size: 15px;
+    font-weight: 400;
+    color: #555555;
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+  
+  .about-content p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .about-content .lead-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #2A2A2A;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+  
+  .consultation-section1 {
+    margin-top: 48px;
+    padding: 32px;
+    background-color: #FBFBFA;
+    border-left: 3px solid #1A1A1A;
+    border-radius: 0 8px 8px 0;
+  }
+  
+  .consultation-section1 h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1A1A1A;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+  
+  .consultation-section1 p {
+    font-size: 14.5px;
+    color: #555555;
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+  
+  .consultation-section2 {
+    margin-top: 56px;
+  }
+  
+  .consultation-section2 h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #1A1A1A;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+  }
+  
+  .section2-intro {
+    font-size: 15px;
+    color: #777772;
+    font-style: italic;
+    margin-bottom: 36px;
+  }
+  
+  .showcasing {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+  }
+  
+  .showcasing-card {
+    background-color: #FBFBFA;
+    padding: 28px 24px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .showcasing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
+    background-color: #FFFFFF;
+  }
+  
+  .card-icon-placeholder {
+    width: 36px;
+    height: 36px;
+    background-color: rgba(26, 26, 26, 0.05);
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  
+  .showcasing-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1A1A1A;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+  
+  .showcasing-card p {
+    font-size: 13.5px;
+    color: #666661;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+  
+  @media (max-width: 1200px) {
+    .showcasing {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+  
+  @media (max-width: 968px) {
+    .about-container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .about-image-placeholder {
+      height: 350px;
+    }
+  }
