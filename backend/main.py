@@ -2,6 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 from contact import contact_bp
 from chat import chat_bp
+from pricing import pricing_bp
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -12,6 +13,7 @@ def create_app():
 
     app.register_blueprint(contact_bp)
     app.register_blueprint(chat_bp)
+    app.register_blueprint(pricing_bp)
     return app
 
 if __name__ == "__main__":

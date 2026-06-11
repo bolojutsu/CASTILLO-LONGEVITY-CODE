@@ -1,8 +1,11 @@
+import { useState } from "react";
+import { createCheckoutSession } from "../pricing.ts";
+
+
 interface PricingPlan {
     name: string,
     tagline: string,
     price: number,
-    period: string,
     features: string[]
     ctaLabel: string,
     ctaHref: string;
@@ -15,9 +18,8 @@ const plans: PricingPlan[] = [
         name: "Foundation",
         tagline: "For those beginning their journy toward optimized vitality.",
         price: 149,
-        period:"/ month",
         features: [
-        "Monthly 1-on-1 consultation (45 min)",
+        "1-on-1 consultation (45 min)",
         "Personalized nutrition baseline assessment",
         "Core longevity protocol & meal framework",
         "Email support within 48 hours",
@@ -29,9 +31,8 @@ const plans: PricingPlan[] = [
         name: "Optimizaion",
         tagline: "A comprihensive protocol for measurable, lasting transformation",
         price: 299,
-        period: "/ month",
         features: [
-            "Bi-weekly 1-on-1 consultations (60 min)",
+            "1-on-1 consultations (60 min)",
             "Full biochemical & lifestyle analysis",
             "Customized supplement & nutrition roadmap",
             "Quarterly progress reviews & plan recalibration",
@@ -46,9 +47,8 @@ const plans: PricingPlan[] = [
         name: "longevity Elite",
         tagline: "Full-access concierge care with Enreiqu Castillo directly.",
         price: 599,
-        period: "/ month",
         features: [
-            "Weekly private consultations with Enrique",
+            "private consultations with Enrique",
             "Advanced longevity & anti-aging protocol design",
             "Lab work interpretation & biomarker tracking",
             "Direct line access, 7 days a week",
@@ -77,29 +77,62 @@ const CheckIcon = () => {
 }
 
 function PricingCard({ plan }: { plan: PricingPlan }) {
+    const [loading, setLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    
+    const handleCheckout = async (e: React.MouseEvent) => {
+        e.preventDefault();
+        setLoading(true);
+        setErrorMessage(null);
+
+        // 2. Consume your refactored API layer
+        const result = await createCheckoutSession(plan.name);
+
+        if (result.url) {
+            // Secure pass-off directly to the vendor's payment system
+            window.location.href = result.url;
+        } else if (result.error) {
+            setErrorMessage(result.error);
+            setLoading(false);
+        }
+    };
+
     return (
-      <div className={`pricing-card${plan.featured ? " featured" : ""}`}>
-        {plan.badge && <span className="popular-badge">{plan.badge}</span>}
-        <p className="plan-name">{plan.name}</p>
-        <p className="plan-tagline">{plan.tagline}</p>
-        <div className="plan-price">
-          <span className="amount">${plan.price}</span>
-          <span className="period">{plan.period}</span>
+        <div className={`pricing-card${plan.featured ? " featured" : ""}`}>
+            {plan.badge && <span className="popular-badge">{plan.badge}</span>}
+            <p className="plan-name">{plan.name}</p>
+            <p className="plan-tagline">{plan.tagline}</p>
+            <div className="plan-price">
+                <span className="amount">${plan.price}</span>
+            </div>
+            <div className="plan-divider" />
+            <ul className="plan-features">
+                {plan.features.map((feature) => (
+                    <li key={feature}>
+                        <CheckIcon />
+                        {feature}
+                    </li>
+                ))}
+            </ul>
+
+            {/* Display local processing error if something breaks */}
+            {errorMessage && <p className="error-text" style={{ color: '#ff4d4d', fontSize: '14px', marginBottom: '10px' }}>{errorMessage}</p>}
+
+            <button 
+                onClick={handleCheckout} 
+                className="plan-btn" 
+                disabled={loading}
+                style={{ width: '100%', cursor: loading ? 'not-allowed' : 'pointer' }}
+            >
+                {loading ? "Processing..." : plan.ctaLabel}
+            </button>
         </div>
-        <div className="plan-divider" />
-        <ul className="plan-features">
-          {plan.features.map((feature) => (
-            <li key={feature}>
-              <CheckIcon />
-              {feature}
-            </li>
-          ))}
-        </ul>
-        <a href={plan.ctaHref} className="plan-btn">
-          {plan.ctaLabel}
-        </a>
-      </div>
     );
+
+
+
+
+
   }
   
 export default function Pricing() {
