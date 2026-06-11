@@ -5,10 +5,8 @@ const Hero = () => {
             <div className="hero-content">
                 <h1>CASTILLO LONGEVITY CODE</h1>
                 <p>
-                    Committed to improving lives, our medicine company combines cutting-edge research, 
-                    advanced technology and a deep passion for innovation to develop effective, 
-                    high-quality treatments that address the most pressing healthcare challenges 
-                    and ensure a healthier future for all.
+                   Three decades of nutritional science, distilled into personalized protocals 
+                   that extend your healthspan - not just your lifespan.
                 </p>
                 <button className="hero-btn">Contact US</button>
             </div>

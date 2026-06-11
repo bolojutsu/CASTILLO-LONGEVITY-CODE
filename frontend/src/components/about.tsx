@@ -10,28 +10,12 @@ const About = () => {
                     <span className="about-subtitle">Meet the Founder</span>
                     <h1>Hi, I am Enrique Castillo</h1>
                     <p className="lead-text">
-                        Since 1992, I have dedicated my career as a professional Nutritionist to decoding 
-                        the complex relationship between human biochemistry, premium clinical wellness, 
-                        and longevity. What started as a passion for foundational health has evolved into 
-                        a mission to deliver cutting-edge, innovative strategies that empower individuals 
-                        to optimize their vitality.
+                    Since 1992, I've worked as a professional nutritionist decoding the
+                    relationship between human biochemistry and longevity. My mission is
+                    simple: give you actionable, science-backed strategies to optimize
+                    your vitality — for decades, not months.
                     </p>
-                    <p>
-                        Through disciplined research and a deep commitment to high-quality care, my goal 
-                        is to provide actionable, science-backed pathways that secure a healthier, more 
-                        vibrant future for everyone who steps into our ecosystem.
-                    </p>
-
                     {/* {Consultation overview} */}
-                    <div className="consultation-section1">
-                        <h2>Our consultation service would give an edge over illness</h2>
-                        <p>
-                            our medicine is designed to effectively target and cure illness, 
-                            offering pateints a path to recovery and improved health. With proven results and 
-                            a commitment to quality, we are here to support your journy to wellness
-                        </p>
-                    </div>
-
                     <div className="consultation-section2">
                         <h2>Our Consultation Assurances</h2>
                         <p className="section2-intro">
@@ -41,25 +25,25 @@ const About = () => {
                         <div className="showcasing">
                             <div className="showcasing-card showcasing1">
                                 <div className="card-icon-paceholder"></div>
-                                <h3>Long life</h3>
+                                <h3>Longevity First</h3>
                                 <p>
-                                    built to last, our product ensures durabulity and reliability
-                                    for a lifetime of satisfaction.
+                                    Protocols built for the long game: 
+                                    sustanable habits that compound over a lifetime.
                                 </p>
                             </div>
 
                             <div className="showcasing-card showcasing2">
                                 <div className="card-icon-placeholder"></div>
-                                <h3>Cure Diseases</h3>
+                                <h3>Disease Resilliance</h3>
                                 <p>
-                                    Your trusted sheild against diseases, ensuring health and peace of mind.
+                                    Preventative, science-backed strategiesthat strengthen your body's natural defences.
                                 </p>
                             </div>
 
                             <div className="showcasing-card showcasing3">
                                 <div className="card-icon-placeholder"></div>
-                                <h3>Good Health</h3>
-                                <p>Promoting wellness one product at a time.</p>
+                                <h3>Daily Vitality</h3>
+                                <p>Nutrition tuned to your biochemistry, so you feel the difference week to week.</p>
                             </div>
 
 

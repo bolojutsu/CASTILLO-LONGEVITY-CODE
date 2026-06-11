@@ -7,6 +7,7 @@ import Bio from './components/bio.tsx';
 import HealthTips from './components/healthTips.tsx';
 import Contact from './components/contact.tsx';
 import ChatWidget from './components/chatbot.tsx';
+import Pricing from './components/pricing.tsx';
 import './index.css'
 import useScrollReveal from './useScrollReveal.ts';
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Bio/>
       <Testimonies/>
       <HealthTips/>
+      <Pricing/>
       <Contact/>
       <Footer/>
     </main>

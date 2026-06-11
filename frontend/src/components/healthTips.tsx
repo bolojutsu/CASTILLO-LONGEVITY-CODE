@@ -7,7 +7,7 @@ const HealthTips = () => {
                 {/* Header block reveals instantly when entering viewport */}
                 <div className="healthtips-header reveal">
                     <span className="healthtips-subtitle">Biotech Insights</span>
-                    <h1>Health Protocols & Discoveries</h1>
+                    <h1>From Folk Wisdom To FDA Milestone</h1>
                 </div>
 
                 {/* Cultural/Historical Hook Section */}
@@ -27,24 +27,12 @@ const HealthTips = () => {
                     <div className="healthtips-content reveal">
                         <h2>US FDA NDI Notification & Global Market Entry</h2>
                         <p>
-                            In a historic milestone for agricultural biotechnology, TCI in Taiwan announced that its proprietary 
-                            "Banana Peel and Banana Stamen" extracts have successfully completed the US FDA's New Dietary Ingredient (NDI) 
-                            safety review process. This marks a global first for banana-derived neuro-nutritional and metabolic health raw materials, 
-                            transforming what was once discarded as agricultural waste into a premium bio-active asset poised to disrupt the global wellness market.
+                            Carribian practioniners have long prized the whole banana- peel included. Modern scinece agrees:
+                            banana peel and stamen extracts recently clreared the US FDA's new Dietary Ingredient review,
+                            validating their benifits for sleep, stress, and cellular health.
                         </p>
-
                         <p>
-                            Utilizing a patented <em>Ultrasonic Cold Extraction</em> protocol, researchers isolated key bio-active compounds 
-                            capable of positively influencing emotional equilibrium and sleep architecture. Behavioral models indicate that these specialized 
-                            extracts help optimize the metabolic pathways associated with tryptophan expression—effectively accelerating the natural 
-                            production of serotonin and melatonin to encourage systemic stress reduction and restorative sleep cycles.
-                        </p>
-
-                        <p>
-                            Furthermore, scientific explorations into banana stamen extracts have demonstrated significant efficacy in supporting cellular health. 
-                            By helping modulate the pathways responsible for dihydrotestosterone production, these extracts present an innovative, 
-                            non-pharmaceutical approach to prostate health maintenance. These twin scientific breakthroughs have earned top honors, 
-                            including special gold distinctions at the prestigious Geneva Invention Exhibition in Switzerland.
+                            A signal of where longevity nutrition is heading-and the kind of reasurch that informs every Castillo protocol.
                         </p>
                     </div>
 
