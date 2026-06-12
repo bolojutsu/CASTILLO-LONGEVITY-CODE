@@ -7,8 +7,8 @@ stripe.api_key = os.environ.get('STRIPE_API_KEY')
 
 plan_price_id = {
     "Foundation": "price_1F_FOUNDATION_ID",
-    "Optimization": "price_1F_OPTIMIZATION_ID",
-    "longevity Elite": "price_1F_ELITE_ID"
+    "Optimization": "prod_UgpbcCmD6YNKxC",
+    "longevity Elite": "price_1ThRzQCAWtp7tsPs2d2ZigvQ"
 }
 
 @pricing_bp.route('/api/create-checkout-session',methods=['POST'])
@@ -32,7 +32,7 @@ def create_checkout_session():
                 },
             ],
             # If these are recurring monthly billing packages, switch mode to 'subscription'
-            mode='payment', 
+            mode='subscription', 
             success_url='http://localhost:5173/success?session_id={CHECKOUT_SESSION_ID}',
             cancel_url='http://localhost:5173/pricing',
         )

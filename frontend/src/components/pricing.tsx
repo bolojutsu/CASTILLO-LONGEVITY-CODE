@@ -28,7 +28,7 @@ const plans: PricingPlan[] = [
         ctaLabel:"Starter"
     },
     {
-        name: "Optimizaion",
+        name: "Optimization",
         tagline: "A comprihensive protocol for measurable, lasting transformation",
         price: 299,
         features: [

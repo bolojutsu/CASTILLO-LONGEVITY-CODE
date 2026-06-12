@@ -8,24 +8,36 @@ import HealthTips from './components/healthTips.tsx';
 import Contact from './components/contact.tsx';
 import ChatWidget from './components/chatbot.tsx';
 import Pricing from './components/pricing.tsx';
+import Success from './components/success.tsx';
 import './index.css'
 import useScrollReveal from './useScrollReveal.ts';
 function App() {
   useScrollReveal();
 
+
+  const isSuccessPage = window.location.pathname === '/success';
+
   return (
     <>
      <ChatWidget/>
     <main>
-      <Header/>
-      <Hero/>
-      <About/>
-      <Bio/>
-      <Testimonies/>
-      <HealthTips/>
-      <Pricing/>
-      <Contact/>
-      <Footer/>
+      {isSuccessPage ? (
+          // 3. Show only the success screen if they just finished paying
+          <Success />
+        ) : (
+          // 4. Otherwise, show your normal single-page website
+          <>
+            <Header />
+            <Hero />
+            <About />
+            <Bio />
+            <Testimonies />
+            <HealthTips />
+            <Pricing />
+            <Contact />
+            <Footer />
+          </>
+        )}
     </main>
     </>
 
