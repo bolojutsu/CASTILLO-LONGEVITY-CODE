@@ -5,16 +5,11 @@ import Testimonies from './components/testimonies.tsx';
 import Footer from './components/footer.tsx';
 import Bio from './components/bio.tsx';
 import HealthTips from './components/healthTips.tsx';
-import Contact from './components/contact.tsx';
 import ChatWidget from './components/chatbot.tsx';
-import Pricing from './components/pricing.tsx';
 import Success from './components/success.tsx';
+import ConsultationGateway from './components/consultationGateway.tsx';
 import './index.css'
-import useScrollReveal from './useScrollReveal.ts';
 function App() {
-  useScrollReveal();
-
-
   const isSuccessPage = window.location.pathname === '/success';
 
   return (
@@ -33,8 +28,7 @@ function App() {
             <Bio />
             <Testimonies />
             <HealthTips />
-            <Pricing />
-            <Contact />
+            <ConsultationGateway/>
             <Footer />
           </>
         )}

@@ -36,7 +36,8 @@ export default function Success() {
                     Thank You!
                 </h1>
                 <p className="success-description">
-                    Your subscription has been successfully activated. We've sent a confirmation email along with the next steps for your personalized longevity protocol.
+                    Your intake files and order processing sequences have cleared successfully. 
+                    We've transferred confirmation instructions to your inbox to prepare for your live consultation.
                 </p>
 
                 {sessionId && (

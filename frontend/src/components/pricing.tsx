@@ -17,44 +17,15 @@ const plans: PricingPlan[] = [
     {
         name: "Foundation",
         tagline: "For those beginning their journy toward optimized vitality.",
-        price: 149,
+        price: 1000,
         features: [
-        "1-on-1 consultation (45 min)",
+        "1-on-1 consultation (45min - 1hr)",
         "Personalized nutrition baseline assessment",
         "Core longevity protocol & meal framework",
         "Email support within 48 hours",
         ],
         ctaHref: "Start Foundation",
         ctaLabel:"Starter"
-    },
-    {
-        name: "Optimization",
-        tagline: "A comprihensive protocol for measurable, lasting transformation",
-        price: 299,
-        features: [
-            "1-on-1 consultations (60 min)",
-            "Full biochemical & lifestyle analysis",
-            "Customized supplement & nutrition roadmap",
-            "Quarterly progress reviews & plan recalibration",
-            "Priority email & chat support within 24 hours",
-        ],
-        ctaLabel: "begin Optimization",
-        ctaHref: "#contact",
-        featured: true,
-        badge: "Most Popular"
-    },
-    {
-        name: "longevity Elite",
-        tagline: "Full-access concierge care with Enreiqu Castillo directly.",
-        price: 599,
-        features: [
-            "private consultations with Enrique",
-            "Advanced longevity & anti-aging protocol design",
-            "Lab work interpretation & biomarker tracking",
-            "Direct line access, 7 days a week",
-        ],
-        ctaLabel: "Apply for Elite",
-        ctaHref: "#contact"
     },
 ];
 
@@ -128,11 +99,6 @@ function PricingCard({ plan }: { plan: PricingPlan }) {
             </button>
         </div>
     );
-
-
-
-
-
   }
   
 export default function Pricing() {

@@ -1,0 +1,274 @@
+/* ==========================================================================
+   CONSULTATION GATEWAY CONTAINER
+   ========================================================================== */
+   .ConsultationGateway {
+    padding: 80px 20px;
+    background-color: #0b1311; /* Deep, rich dark background */
+    color: #f4f7f6;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  .gateway-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Header Context */
+  .gateway-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  
+  .gateway-subtitle {
+    display: block;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #22c55e; /* Vibrant accent green */
+    margin-bottom: 12px;
+  }
+  
+  .gateway-header h1 {
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.5px;
+  }
+  
+  .gateway-header p {
+    font-size: 16px;
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+  /* ==========================================================================
+     SPLIT TWO-COLUMN GRID ARCHITECTURE
+     ========================================================================== */
+  .gateway-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  
+  /* Desktop Upgrade to Side-by-Side */
+  @media (min-width: 968px) {
+    .gateway-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+  }
+  
+  /* ==========================================================================
+     CARDS & WRAPPERS (Glassmorphism Effects)
+     ========================================================================== */
+  .gateway-form-card,
+  .gateway-pricing-card {
+    background: rgba(22, 32, 29, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+  
+  .gateway-form-card h2,
+  .gateway-pricing-card h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: #e2e8f0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 12px;
+  }
+  
+  /* ==========================================================================
+     STEP 1: INTAKE FORM ELEMENTS
+     ========================================================================== */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .form-group label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #cbd5e1;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    background: rgba(10, 18, 15, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 14px 16px;
+    color: #f4f7f6;
+    font-size: 15px;
+    transition: all 0.2s ease;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+  }
+  
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: #475569;
+  }
+  
+  /* Submission Action Buttons */
+  .form-submit-btn,
+  .plan-btn {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    padding: 16px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    width: 100%;
+  }
+  
+  .form-submit-btn:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Form Success & Error Banners */
+  .form-feedback {
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .feedback-loading {
+    background: rgba(234, 179, 8, 0.1);
+    border: 1px solid rgba(234, 179, 8, 0.2);
+    color: #facc15;
+  }
+  
+  .feedback-success {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+  }
+  
+  .feedback-error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: #f87171;
+  }
+  
+  /* ==========================================================================
+     STEP 2: SINGLE PRICING DISPLAY
+     ========================================================================== */
+  .single-plan-box .plan-name {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    color: #ffffff;
+  }
+  
+  .single-plan-box .plan-tagline {
+    font-size: 14px;
+    color: #94a3b8;
+    margin: 0 0 24px 0;
+  }
+  
+  .single-plan-box .plan-price {
+    margin-bottom: 24px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  
+  .single-plan-box .amount {
+    font-size: 48px;
+    font-weight: 800;
+    color: #ffffff;
+  }
+  
+  .single-plan-box .period {
+    font-size: 14px;
+    color: #64748b;
+  }
+  
+  .plan-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin-bottom: 24px;
+  }
+  
+  /* Feature Unordered Lists */
+  .plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .plan-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    color: #cbd5e1;
+    line-height: 1.4;
+  }
+  
+  .plan-features li svg {
+    color: #22c55e;
+    flex-shrink: 0;
+  }
+  
+  /* Highlighted Interactive Stripe Button */
+  .plan-btn.featured-btn {
+    background-color: #22c55e;
+    border-color: #22c55e;
+    color: #052e16;
+  }
+  
+  .plan-btn.featured-btn:hover {
+    background-color: #4ade80;
+    border-color: #4ade80;
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+  }
+  
+  .plan-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  
+  .error-text {
+    color: #f87171;
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  
+  .pricing-note {
+    font-size: 12px;
+    color: #475569;
+    text-align: center;
+    margin-top: 20px;
+    line-height: 1.5;
+  }

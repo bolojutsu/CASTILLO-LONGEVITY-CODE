@@ -6,9 +6,7 @@ pricing_bp = Blueprint("pricing", __name__)
 stripe.api_key = os.environ.get('STRIPE_API_KEY')
 
 plan_price_id = {
-    "Foundation": "price_1F_FOUNDATION_ID",
-    "Optimization": "prod_UgpbcCmD6YNKxC",
-    "longevity Elite": "price_1ThRzQCAWtp7tsPs2d2ZigvQ"
+    "Foundation": "price_1TlSt9CAWtp7tsPsOmI3O0Kk",
 }
 
 @pricing_bp.route('/api/create-checkout-session',methods=['POST'])
@@ -32,9 +30,9 @@ def create_checkout_session():
                 },
             ],
             # If these are recurring monthly billing packages, switch mode to 'subscription'
-            mode='subscription', 
+            mode='payment', 
             success_url='http://localhost:5173/success?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url='http://localhost:5173/pricing',
+            cancel_url='http://localhost:5173/gateway',
         )
         return jsonify({
             'url': checkout_session.url
