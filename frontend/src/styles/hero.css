@@ -62,6 +62,9 @@
   .hero-btn-primary{
     background-color:#1A1A1A;
     color: #FBFBFA;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
   }
 
   .hero-btn-primary:hover {
