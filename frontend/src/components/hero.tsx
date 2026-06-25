@@ -8,7 +8,10 @@ const Hero = () => {
                    Three decades of nutritional science, distilled into personalized protocals 
                    that extend your healthspan - not just your lifespan.
                 </p>
-                <button className="hero-btn">Contact US</button>
+                <div className="hero-btn-group">
+                    <button className="hero-btn hero-btn-primary">Contact US</button>
+                    <a href="/learn-more" className="hero-btn hero-btn-secondary">Learn more</a>
+                </div>
             </div>
         </section>
     );

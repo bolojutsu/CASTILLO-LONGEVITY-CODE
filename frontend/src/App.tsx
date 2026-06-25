@@ -9,34 +9,40 @@ import ChatWidget from './components/chatbot.tsx';
 import Success from './components/success.tsx';
 import ConsultationGateway from './components/consultationGateway.tsx';
 import './index.css'
+
 function App() {
+  const path  = window.location.pathname;
   const isSuccessPage = window.location.pathname === '/success';
+  const isLearnMorePage = path === '/learn-more';
 
   return (
     <>
-     <ChatWidget/>
-    <main>
-      {isSuccessPage ? (
-          // 3. Show only the success screen if they just finished paying
+      <ChatWidget />
+      <main>
+        {isSuccessPage ? (
           <Success />
+        ) : isLearnMorePage ? (
+          /* Render only the requested components for the Learn More page */
+          <>
+            <Header />
+            <Bio />
+            <Testimonies />
+            <HealthTips />
+            <Footer />
+          </>
         ) : (
-          // 4. Otherwise, show your normal single-page website
+          /* Your normal single-page website landing view */
           <>
             <Header />
             <Hero />
             <About />
-            <Bio />
-            <Testimonies />
-            <HealthTips />
-            <ConsultationGateway/>
+            <ConsultationGateway />
             <Footer />
           </>
         )}
-    </main>
+      </main>
     </>
-
-    
-  )
+  );
 }
 
 export default App

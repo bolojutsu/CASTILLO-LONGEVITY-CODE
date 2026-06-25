@@ -62,7 +62,7 @@ const ConsultationGateway = () => {
             <div className="gateway-container">
                 
                 {/* Header Section */}
-                <div className="gateway-header">
+                <div className="gateway-header" id="gateway-header">
                     <span className="gateway-subtitle">Secure Ecosystem Access</span>
                     <h1>Initiate Longevity Protocol</h1>
                     <p>
