@@ -1,3 +1,5 @@
+import { API_URL } from "./api";
+
 export interface ContactFormData {
     name: string;
     email: string;
@@ -12,7 +14,7 @@ export interface APIResponse {
 
 export const submitContactForm = async (formData: ContactFormData): Promise<APIResponse> => {
     try {
-        const response = await fetch('http://127.0.0.1:5000/api/contact', {
+        const response = await fetch(`${API_URL}/api/contact`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

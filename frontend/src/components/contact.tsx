@@ -1,5 +1,6 @@
 // components/Contact.tsx
 import React, { useState } from 'react';
+import { API_URL } from '../api';
 
 const Contact = () => {
     // Manage input field state
@@ -25,8 +26,7 @@ const Contact = () => {
         setStatus({ type: 'loading', message: 'Transmitting encrypted protocol...' });
 
         try {
-            // Point this URL to your local Flask development server port (usually 5000)
-            const response = await fetch('http://127.0.0.1:5000/api/contact', {
+            const response = await fetch(`${API_URL}/api/contact`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

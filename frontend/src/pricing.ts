@@ -1,3 +1,5 @@
+import { API_URL } from "./api";
+
 export interface CheckoutRequest {
     planName: String;
 }
@@ -6,8 +8,6 @@ export interface CheckoutResponse {
     url?: string;
     error?: string;
 }
-
-const API_URL = "http://localhost:5000";
 
 export const createCheckoutSession = async (planName: string): Promise<CheckoutResponse> => {
     try {
