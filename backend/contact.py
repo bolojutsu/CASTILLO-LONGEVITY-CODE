@@ -12,7 +12,7 @@ YOUR_EMAIL = os.environ.get("YOUR_EMAIL")
 SENDER_EMAIL = os.environ.get("RESEND_SENDER_EMAIL")
 
 
-@contact_bp.route('/api/contact', methods=['POST'])
+@contact_bp.route('/contact', methods=['POST'])
 def handle_contact_submission():
     data = request.get_json()
 

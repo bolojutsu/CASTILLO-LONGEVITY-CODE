@@ -10,7 +10,7 @@ plan_price_id = {
     "Foundation": "price_1TlSt9CAWtp7tsPsOmI3O0Kk",
 }
 
-@pricing_bp.route('/api/create-checkout-session',methods=['POST'])
+@pricing_bp.route('/create-checkout-session',methods=['POST'])
 def create_checkout_session():
     try: 
         data = request.get_json() or {}
