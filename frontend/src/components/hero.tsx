@@ -7,8 +7,8 @@ const Hero = () => {
                 <p>
                    The Castillo Code is a simple practice that yeilds impressive results.
                    It is designed for everyone- whether you are still up on your feet managing an everyday
-                   illness, or fcing the final stages or terminal cancer where chemotherapy has been exhausted,
-                   hospital options arelimited, and you simply want to give yourself another chance. 
+                   illness, or facing the final stages or terminal cancer where chemotherapy has been exhausted,
+                   hospital options are limited, and you simply want to give yourself another chance. 
                 </p>
                 <div className="hero-btn-group">
                     <a href="#gateway-header" className="hero-btn hero-btn-primary">Contact US</a>

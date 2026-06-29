@@ -15,9 +15,9 @@ def create_app():
         "http://127.0.0.1:5173",
         "http://localhost:3000",
     ]
-    frontend_url = os.environ.get("FRONTEND_URL", "").rstrip("/")
-    if frontend_url and frontend_url not in cors_origins:
-        cors_origins.append(frontend_url)
+    # frontend_url = os.environ.get("FRONTEND_URL", "").rstrip("/")
+    # if frontend_url and frontend_url not in cors_origins:
+    #     cors_origins.append(frontend_url)
     CORS(app, origins=cors_origins)
 
     app.register_blueprint(contact_bp)

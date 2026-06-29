@@ -53,7 +53,7 @@ export default function Success() {
 
                 <a 
                     href="/" 
-                    className="plan-btn success-return-btn" /* Keeps your global plan-btn styling combined with the specific return layout */
+                    className="success-return-btn" 
                 >
                     Return to Dashboard
                 </a>

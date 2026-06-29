@@ -4,7 +4,7 @@ import stripe
 
 pricing_bp = Blueprint("pricing", __name__)
 stripe.api_key = os.environ.get('STRIPE_API_KEY')
-FRONTEND_URL = os.environ.get('FRONTEND_URL', 'http://localhost:5173').rstrip('/')
+FRONTEND_URL = os.environ.get('FRONTEND_URL', 'http://localhost:5000').rstrip('/')
 
 plan_price_id = {
     "Foundation": "price_1TlSt9CAWtp7tsPsOmI3O0Kk",
