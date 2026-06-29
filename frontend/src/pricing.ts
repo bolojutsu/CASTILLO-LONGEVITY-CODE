@@ -1,4 +1,4 @@
-import { API_URL } from "./api";
+
 
 export interface CheckoutRequest {
     planName: String;
@@ -11,7 +11,7 @@ export interface CheckoutResponse {
 
 export const createCheckoutSession = async (planName: string): Promise<CheckoutResponse> => {
     try {
-        const response = await fetch(`${API_URL}/create-checkout-session`, {
+        const response = await fetch('http://localhost:5000/api/create-checkout-session', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

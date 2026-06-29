@@ -5,7 +5,7 @@ export interface Message {
     content: string;
 }
 
-import { API_URL } from "./api";
+
 
 export const useChat = () => {
     const [messages, setMessages] = useState<Message[]>([]);
@@ -24,7 +24,7 @@ export const useChat = () => {
         setMessages((previous) => [...previous, { role: "assistant", content: "" }]);
 
         try {
-            const res = await fetch(`${API_URL}/api/chat`, {
+            const res = await fetch('http://127.0.0.1:5000', {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ messages: updatedMessages }),

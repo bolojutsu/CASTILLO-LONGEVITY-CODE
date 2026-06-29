@@ -32,8 +32,8 @@ def create_checkout_session():
             ],
             # If these are recurring monthly billing packages, switch mode to 'subscription'
             mode='payment', 
-            success_url=f'{FRONTEND_URL}/success?session_id={{CHECKOUT_SESSION_ID}}',
-            cancel_url=f'{FRONTEND_URL}/gateway',
+            success_url=f'http://localhost:5173/success?session_id={{CHECKOUT_SESSION_ID}}',
+            cancel_url=f'http://localhost:5173/gateway',
         )
         return jsonify({
             'url': checkout_session.url
