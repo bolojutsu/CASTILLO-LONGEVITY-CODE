@@ -26,7 +26,7 @@ const Contact = () => {
         setStatus({ type: 'loading', message: 'Transmitting encrypted protocol...' });
 
         try {
-            const response = await fetch(`${API_URL}/api/contact`, {
+            const response = await fetch(`${API_URL}/contact`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -42,7 +42,7 @@ const Contact = () => {
             } else {
                 setStatus({ type: 'error', message: data.error || 'Transmission failed. Please check inputs.' });
             }
-        } catch (error) {
+        } catch {
             setStatus({ type: 'error', message: 'Unable to connect to security servers. Please try again later.' });
         }
     };

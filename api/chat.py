@@ -4,7 +4,14 @@ import os
 
 chat_bp = Blueprint("chat", __name__)
 
-client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
+client = OpenAI(
+    base_url=os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434/v1"),
+    api_key=os.environ.get("OLLAMA_API_KEY", "ollama"),
+)
+CHAT_MODEL = os.environ.get("OLLAMA_MODEL", "llama3.2:latest")
+MAX_MESSAGE_LENGTH = 4_000
+MAX_TOTAL_MESSAGE_LENGTH = 12_000
+MAX_HISTORY_LENGTH = 10
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROMPT_FILE_PATH = os.path.join(BASE_DIR, "systemPrompt.txt")
@@ -18,27 +25,49 @@ except FileNotFoundError:
 
 @chat_bp.route("/api/chat", methods=["POST"])
 def chat():
-    data  = request.get_json()
-    messages = data.get("messages", [])
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict):
+        return jsonify({"error": "A JSON object is required"}), 400
 
-    if not messages:
-        return jsonify({
-            "error": "No messages provided"
-        }), 400
+    messages = data.get("messages")
+    if not isinstance(messages, list) or not messages:
+        return jsonify({"error": "No messages provided"}), 400
 
-    # cap history to last 10 messages to control token usage
-    trimmed = messages[-10:]
+    normalized_messages = []
+    total_length = 0
+    for message in messages[-MAX_HISTORY_LENGTH:]:
+        if not isinstance(message, dict):
+            return jsonify({"error": "Each message must be an object"}), 400
 
-    # Streaming response
+        role = message.get("role")
+        content = message.get("content")
+        if role not in {"user", "assistant"} or not isinstance(content, str):
+            return jsonify({"error": "Invalid message role or content"}), 400
+
+        content = content.strip()
+        if not content or len(content) > MAX_MESSAGE_LENGTH:
+            return jsonify({"error": "Message content is invalid"}), 400
+        if any(ord(character) < 32 and character not in "\n\t" for character in content):
+            return jsonify({"error": "Message content contains invalid characters"}), 400
+
+        total_length += len(content)
+        normalized_messages.append({"role": role, "content": content})
+
+    if total_length > MAX_TOTAL_MESSAGE_LENGTH:
+        return jsonify({"error": "Message history is too large"}), 400
+
+    if normalized_messages[-1]["role"] != "user":
+        return jsonify({"error": "The final message must be from the user"}), 400
+
     def generate():
         try:
             stream = client.chat.completions.create(
-                model="llama3.2:latest",
+                model=CHAT_MODEL,
                 max_tokens=500,
                 stream=True,
                 messages=[
                     {"role": "system", "content": SYSTEM_PROMPT},
-                    *trimmed,
+                    *normalized_messages,
                 ]
             )
 
@@ -48,11 +77,11 @@ def chat():
                     if delta is not None:
                         yield delta
 
-        except Exception as e:
-            print(f"[chat] streaming error: {e}")
+        except Exception:
             yield "\n\n[Assistant unavailable — please try again later.]"
+
     return Response(
         stream_with_context(generate()),
         mimetype="text/plain",
-        headers={"X-Accel-Buffering": "no"}, 
+        headers={"X-Accel-Buffering": "no"},
     )

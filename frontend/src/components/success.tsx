@@ -1,13 +1,32 @@
 import { useEffect, useState } from "react";
+import { verifyCheckoutSession } from "../pricing";
 
 export default function Success() {
-    const [sessionId, setSessionId] = useState<string | null>(null);
+    const sessionId = new URLSearchParams(window.location.search).get("session_id");
+    const [status, setStatus] = useState<"loading" | "verified" | "error">(
+        sessionId ? "loading" : "error",
+    );
 
     useEffect(() => {
-        const searchParams = new URLSearchParams(window.location.search);
-        const id = searchParams.get("session_id");
-        setSessionId(id);
-    }, []);
+        const controller = new AbortController();
+
+        if (!sessionId) {
+            return;
+        }
+
+        void verifyCheckoutSession(sessionId, controller.signal).then((result) => {
+            if (result.verified) {
+                setStatus("verified");
+            } else if (result.error || result.verified === false) {
+                setStatus("error");
+            }
+        });
+
+        return () => controller.abort();
+    }, [sessionId]);
+
+    const isVerified = status === "verified";
+    const isLoading = status === "loading";
 
     return (
         <section className="SuccessPage">
@@ -30,17 +49,24 @@ export default function Success() {
                 </div>
 
                 <p className="success-status-text">
-                    Payment Successful
+                    {isVerified
+                        ? "Payment Successful"
+                        : isLoading
+                            ? "Verifying Payment"
+                            : "Payment Not Verified"}
                 </p>
                 <h1 className="success-title">
-                    Thank You!
+                    {isVerified ? "Thank You!" : isLoading ? "Please Wait" : "Verification Required"}
                 </h1>
                 <p className="success-description">
-                    Your intake files and order processing sequences have cleared successfully. 
-                    We've transferred confirmation instructions to your inbox to prepare for your live consultation.
+                    {isVerified
+                        ? "Your payment has been verified. Our team will contact you with the next steps."
+                        : isLoading
+                            ? "We are confirming the payment status with Stripe."
+                            : "We could not confirm a completed payment. Please return and try again or contact support."}
                 </p>
 
-                {sessionId && (
+                {isVerified && sessionId && (
                     <div className="session-box">
                         <p className="session-label">
                             Receipt / Session ID
