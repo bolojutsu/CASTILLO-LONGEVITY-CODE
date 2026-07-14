@@ -30,9 +30,14 @@ export const useChat = () => {
                 body: JSON.stringify({ messages: updatedMessages }),
             });
       
-            if (!res.ok) throw new Error("Chat request failed");
-      
-            const reader = res.body!.getReader();
+            if (!res.ok) {
+                const detail = await res.json().catch(() => null);
+                throw new Error(detail?.error ?? `Chat request failed (${res.status})`);
+            }
+
+            if (!res.body) throw new Error("Chat response contained no body");
+
+            const reader = res.body.getReader();
             const decoder = new TextDecoder();
       
             while (true) {
@@ -54,7 +59,9 @@ export const useChat = () => {
                 });
             }
         } catch (err) {
-            setError("Something went wrong. Please try again.");
+            console.error("[chat] request failed:", err);
+            const message = err instanceof Error ? err.message : "Something went wrong. Please try again.";
+            setError(message);
             // Remove the empty assistant placeholder on failure
             setMessages((prev) => prev.slice(0, -1));
         } finally {

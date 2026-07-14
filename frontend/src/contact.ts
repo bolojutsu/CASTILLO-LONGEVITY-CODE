@@ -36,6 +36,7 @@ export const submitContactForm = async (formData: ContactFormData): Promise<APIR
 
 
     } catch (error) {
+        console.error('[Contact Service Error]:', error);
         return {
             success: false,
             message: 'Unable to connect to security servers. Please try again later.',

@@ -43,6 +43,7 @@ const Contact = () => {
                 setStatus({ type: 'error', message: data.error || 'Transmission failed. Please check inputs.' });
             }
         } catch (error) {
+            console.error('[Contact submission failed]:', error);
             setStatus({ type: 'error', message: 'Unable to connect to security servers. Please try again later.' });
         }
     };

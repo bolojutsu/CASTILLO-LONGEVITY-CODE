@@ -14,7 +14,7 @@ SENDER_EMAIL = os.environ.get("RESEND_SENDER_EMAIL")
 
 @contact_bp.route('/contact', methods=['POST'])
 def handle_contact_submission():
-    data = request.get_json()
+    data = request.get_json(silent=True)
 
     # 1. check if payload exist
     if not data:

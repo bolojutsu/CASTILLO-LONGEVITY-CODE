@@ -62,8 +62,8 @@ function PricingCard({ plan }: { plan: PricingPlan }) {
         if (result.url) {
             // Secure pass-off directly to the vendor's payment system
             window.location.href = result.url;
-        } else if (result.error) {
-            setErrorMessage(result.error);
+        } else {
+            setErrorMessage(result.error ?? 'Unable to start checkout. Please try again.');
             setLoading(false);
         }
     };

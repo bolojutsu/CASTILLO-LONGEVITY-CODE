@@ -51,8 +51,8 @@ const ConsultationGateway = () => {
 
         if (result.url) {
             window.location.href = result.url;
-        } else if (result.error) {
-            setPaymentError(result.error);
+        } else {
+            setPaymentError(result.error ?? 'Unable to start checkout. Please try again.');
             setPaymentLoading(false);
         }
     };
