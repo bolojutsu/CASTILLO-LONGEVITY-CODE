@@ -1,6 +1,6 @@
 // components/Contact.tsx
 import React, { useState } from 'react';
-import { API_URL } from '../api';
+import { postJson } from '../api';
 
 const Contact = () => {
     // Manage input field state
@@ -26,13 +26,7 @@ const Contact = () => {
         setStatus({ type: 'loading', message: 'Transmitting encrypted protocol...' });
 
         try {
-            const response = await fetch(`${API_URL}/api/contact`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
+            const response = await postJson('/contact', formData);
 
             const data = await response.json();
 
@@ -42,7 +36,7 @@ const Contact = () => {
             } else {
                 setStatus({ type: 'error', message: data.error || 'Transmission failed. Please check inputs.' });
             }
-        } catch (error) {
+        } catch {
             setStatus({ type: 'error', message: 'Unable to connect to security servers. Please try again later.' });
         }
     };

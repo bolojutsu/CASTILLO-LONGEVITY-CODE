@@ -1,7 +1,7 @@
-
+import { postJson } from "./api";
 
 export interface CheckoutRequest {
-    planName: String;
+    planName: string;
 }
 
 export interface CheckoutResponse {
@@ -11,13 +11,7 @@ export interface CheckoutResponse {
 
 export const createCheckoutSession = async (planName: string): Promise<CheckoutResponse> => {
     try {
-        const response = await fetch('http://localhost:5000/create-checkout-session', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ planName } satisfies CheckoutRequest),
-        });
+        const response = await postJson('/create-checkout-session', { planName } satisfies CheckoutRequest);
 
         const data: CheckoutResponse = await response.json();
 

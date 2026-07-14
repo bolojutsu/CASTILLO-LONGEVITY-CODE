@@ -4,6 +4,8 @@ import resend
 from dotenv import load_dotenv
 from flask import Blueprint, request, jsonify
 
+from utils import json_error
+
 contact_bp = Blueprint('contact', __name__)
 EMAIL_REGEX = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
 
@@ -18,9 +20,7 @@ def handle_contact_submission():
 
     # 1. check if payload exist
     if not data:
-        return jsonify({
-            "error": "Malformed request. Missing payload"
-        }), 400
+        return json_error("Malformed request. Missing payload", 400)
     
     name = data.get('name', '').strip()
     email = data.get('email', '').strip()
@@ -28,12 +28,10 @@ def handle_contact_submission():
 
     # 2 feild validation
     if not name or not email or not message:
-        return jsonify({
-            "error": "All fields (Name, Email, Message) are strictly required."
-        }), 400
+        return json_error("All fields (Name, Email, Message) are strictly required.", 400)
     
     if not re.match(EMAIL_REGEX, email):
-        return jsonify({"error": "Invalid email address protocol format."}), 400
+        return json_error("Invalid email address protocol format.", 400)
     
     # 3. Process the data (Log it to console for now)
     # In a production environment, you would hook up an email service (like SendGrid) or write to a database here.
@@ -78,7 +76,7 @@ def handle_contact_submission():
 
     except Exception as e:
         print(f"Resend Email Error: {e}")
-        return jsonify({"error": "Internal mail server error. Please try again later."}), 500
+        return json_error("Internal mail server error. Please try again later.", 500)
 
     print("\n--- NEW SECURE BOOKING REQUEST ---")
     print(f"Patient Name: {name}")

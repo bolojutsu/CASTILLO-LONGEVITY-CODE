@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import { postJson } from "./api";
 
 export interface Message {
     role: "user" | "assistant"; // Fixed: removed leading space from " assistant"
@@ -24,11 +25,7 @@ export const useChat = () => {
         setMessages((previous) => [...previous, { role: "assistant", content: "" }]);
 
         try {
-            const res = await fetch('http://localhost:5000/api/chat', {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ messages: updatedMessages }),
-            });
+            const res = await postJson('/api/chat', { messages: updatedMessages });
       
             if (!res.ok) throw new Error("Chat request failed");
       
@@ -53,7 +50,7 @@ export const useChat = () => {
                     return updated;
                 });
             }
-        } catch (err) {
+        } catch {
             setError("Something went wrong. Please try again.");
             // Remove the empty assistant placeholder on failure
             setMessages((prev) => prev.slice(0, -1));

@@ -1,6 +1,8 @@
-from flask import Blueprint, request, jsonify, Response, stream_with_context
+from flask import Blueprint, request, Response, stream_with_context
 from openai import OpenAI
 import os
+
+from utils import json_error
 
 chat_bp = Blueprint("chat", __name__)
 
@@ -22,9 +24,7 @@ def chat():
     messages = data.get("messages", [])
 
     if not messages:
-        return jsonify({
-            "error": "No messages provided"
-        }), 400
+        return json_error("No messages provided", 400)
 
     # cap history to last 10 messages to control token usage
     trimmed = messages[-10:]

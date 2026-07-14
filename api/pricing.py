@@ -2,6 +2,8 @@ import os
 from flask import Blueprint, request, jsonify
 import stripe
 
+from utils import json_error
+
 pricing_bp = Blueprint("pricing", __name__)
 stripe.api_key = os.environ.get('STRIPE_API_KEY')
 FRONTEND_URL = os.environ.get('FRONTEND_URL', 'http://localhost:5000').rstrip('/')
@@ -18,9 +20,7 @@ def create_checkout_session():
 
         price_id = plan_price_id.get(plan_name)
         if not price_id:
-            return jsonify({
-                "error": f"Invalid plan selected: {plan_name}"
-            }), 400
+            return json_error(f"Invalid plan selected: {plan_name}", 400)
         
         checkout_session = stripe.checkout.Session.create(
             payment_method_types=['card'],
@@ -40,4 +40,4 @@ def create_checkout_session():
         })
     except Exception as e:
         print(f"[Stripe Error]: {e}")
-        return jsonify(error=str(e)), 500
+        return json_error(str(e), 500)
