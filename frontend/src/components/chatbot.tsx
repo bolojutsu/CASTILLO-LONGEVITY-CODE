@@ -3,9 +3,9 @@ import { useChat } from "../chatbot.ts";
 
 const SUGGESTED_QUESTIONS = [
   "What services do you offer?",
-  "Tell me about your AI projects",
-  "What's your tech stack?",
-  "How do I hire you?",
+  "What are some of your testimonials?",
+  "How much do you charge",
+  "How do I consult with you?",
 ];
 
 const ChatWidget = () => {
