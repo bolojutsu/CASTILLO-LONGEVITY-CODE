@@ -1,6 +1,5 @@
 // components/Contact.tsx
 import React, { useState } from 'react';
-import { API_URL } from '../api';
 
 const Contact = () => {
     // Manage input field state
@@ -26,7 +25,7 @@ const Contact = () => {
         setStatus({ type: 'loading', message: 'Transmitting encrypted protocol...' });
 
         try {
-            const response = await fetch(`${API_URL}/api/contact`, {
+            const response = await fetch(`http://localhost:5000/api/contact`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
