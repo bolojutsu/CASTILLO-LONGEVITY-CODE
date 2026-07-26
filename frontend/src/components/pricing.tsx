@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createCheckoutSession } from "../pricing.ts";
+import { createCheckoutSession } from "../configs/pricing.ts";
 
 
 interface PricingPlan {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createCheckoutSession } from "../pricing";
+import { createCheckoutSession } from "../configs/pricing";
 import { submitContactForm } from "../contact";
 
 
