@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createCheckoutSession } from "../configs/pricing";
-import { submitContactForm } from "../contact";
+import { submitContactForm } from "../configs/contact";
 
 
 const ConsultationGateway = () => {
@@ -139,7 +139,7 @@ const ConsultationGateway = () => {
                             <p className="plan-tagline">Comprehensive alignment toward optimized vitality.</p>
                             
                             <div className="plan-price">
-                                <span className="amount">$1,000</span>
+                                <span className="amount">$1000 </span>
                                 <span className="period">/ One-time setup fee</span>
                             </div>
 

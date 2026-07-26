@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { useChat } from "../chatbot.ts";
+import { useChat } from "../configs/chatbot";
 
 const SUGGESTED_QUESTIONS = [
   "What services do you offer?",

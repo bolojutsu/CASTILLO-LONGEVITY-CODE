@@ -1,9 +1,10 @@
+import img from "../images/Ricky.png"
 const About = () => {
     return (
         <section className="About" id="about">
             <div className="about-container">
                 <div className="about-image">
-                    {}
+                    {<img src={img} alt="" />}
                     <div className="image-fallback">EST. 1992</div>
                 </div>
                 <div className="about-content">
@@ -15,6 +16,7 @@ const About = () => {
                     simple: give you actionable, science-backed strategies to optimize
                     your vitality — for decades, not months.
                     </p>
+
                     {/* {Consultation overview} */}
                     <div className="consultation-section2">
                         <h2>Our Consultation Assurances</h2>
@@ -45,8 +47,6 @@ const About = () => {
                                 <h3>Daily Vitality</h3>
                                 <p>Nutrition tuned to your biochemistry, so you feel the difference week to week.</p>
                             </div>
-
-
                         </div>
                     </div>
                 </div>

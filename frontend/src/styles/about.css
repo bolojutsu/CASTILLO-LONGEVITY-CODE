@@ -28,6 +28,28 @@
     overflow: hidden;
     border: 1px solid rgba(0, 0, 0, 0.03);
   }
+
+  .about-image {
+    width: 100%;
+    height: 500px;
+    background-color: #F5F5F3;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+  }
+
+  .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the box nicely without distorting */
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
   
   .image-fallback {
     font-family: 'Poppins', sans-serif;
