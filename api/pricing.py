@@ -1,6 +1,7 @@
 import os
 from flask import Blueprint, request, jsonify
 import stripe
+from extensions import limiter
 
 pricing_bp = Blueprint("pricing", __name__)
 stripe.api_key = os.environ.get('STRIPE_API_KEY')
@@ -11,6 +12,7 @@ plan_price_id = {
 }
 
 @pricing_bp.route('/create-checkout-session',methods=['POST'])
+@limiter.limit("5 per minute; 20 per day")
 def create_checkout_session():
     try: 
         data = request.get_json() or {}
@@ -44,6 +46,7 @@ def create_checkout_session():
 
 
 @pricing_bp.route('/verify-session/<session_id>', methods=['GET'])
+@limiter.limit("10 per minute")
 def verify_session(session_id):
     try:
         session = stripe.checkout.Session.retrieve(session_id)
