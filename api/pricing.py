@@ -41,3 +41,32 @@ def create_checkout_session():
     except Exception as e:
         print(f"[Stripe Error]: {e}")
         return jsonify(error=str(e)), 500
+
+
+@pricing_bp.route('/verify-session/<session_id>', methods=['GET'])
+def verify_session(session_id):
+    try:
+        session = stripe.checkout.Session.retrieve(session_id)
+
+        if session.payment_status == 'paid':
+            return jsonify({
+                'verified': True,
+                'customer_email': session.customer_details.email if session.customer_details else None,
+            })
+        else:
+            return jsonify({
+                'verified': False,
+                'error': 'Payment has not been completed for this session.'
+            }), 402
+
+    except stripe.error.InvalidRequestError:
+        return jsonify({
+            'verified': False,
+            'error': 'Session not found.'
+        }), 404
+    except Exception as e:
+        print(f"[Stripe Verify Error]: {e}")
+        return jsonify({
+            'verified': False,
+            'error': 'Unable to verify payment session.'
+        }), 500
