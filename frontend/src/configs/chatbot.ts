@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 
 export interface Message {
-    role: "user" | "assistant"; // Fixed: removed leading space from " assistant"
+    role: "user" | "assistant";
     content: string;
 }
 
@@ -12,7 +12,7 @@ export const useChat = () => {
     const [streaming, setStreaming] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const sendMessage = useCallback(async (userText: string) => { // Fixed typo: senfMessage -> sendMessage
+    const sendMessage = useCallback(async (userText: string) => { 
         const userMessage: Message = { role: "user", content: userText };
         const updatedMessages = [...messages, userMessage];
         

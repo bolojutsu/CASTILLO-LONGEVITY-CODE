@@ -8,6 +8,7 @@ import HealthTips from './components/healthTips.tsx';
 import ChatWidget from './components/chatbot.tsx';
 import Success from './components/success.tsx';
 import ConsultationGateway from './components/consultationGateway.tsx';
+import { Analytics } from '@vercel/analytics/next';
 import './index.css'
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
             <Testimonies />
             <HealthTips />
             <Footer />
+            <Analytics/>
           </>
         ) : (
           /* Your normal single-page website landing view */
@@ -38,6 +40,7 @@ function App() {
             <About />
             <ConsultationGateway />
             <Footer />
+            <Analytics/>
           </>
         )}
       </main>
