@@ -6,7 +6,7 @@ import Testimonies from './components/testimonies.tsx';
 import Footer from './components/footer.tsx';
 import Bio from './components/bio.tsx';
 import HealthTips from './components/healthTips.tsx';
-import ChatWidget from './components/chatbot.tsx';
+// import ChatWidget from './components/chatbot.tsx';
 import Success from './components/success.tsx';
 import ConsultationGateway from './components/consultationGateway.tsx';
 import './index.css'
@@ -18,7 +18,7 @@ function App() {
 
   return (
     <>
-      <ChatWidget />
+      {/* <ChatWidget /> */}
       <main>
         {isSuccessPage ? (
           <Success />
