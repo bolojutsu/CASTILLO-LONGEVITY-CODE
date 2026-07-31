@@ -1,5 +1,4 @@
-// components/header2.tsx
-import { use, useState } from "react";
+import { useState } from "react";
 
 const Header2 = () => {
     const [isOpen, setIsOpen] = useState(false);
