@@ -1,4 +1,4 @@
-// components/HealthTips.tsx
+import img from '../images/Gemini_Generated_Image_bfgnpsbfgnpsbfgn.png';
 const HealthTips = () => {
     return (
         <section className="HealthTips" id="healthtips">
@@ -37,12 +37,13 @@ const HealthTips = () => {
                     </div>
 
                     {/* Placeholder for an abstract scientific asset or premium medical layout graphic */}
-                    <div className="healthtips-graphic reveal">
-                        <div className="graphic-overlay">
-                            <span>Fig. 04 // Extraction Blueprint</span>
-                        </div>
-                    </div>
+                   <div className='healthtips-graphic reveal'>
+                        <img 
+                        src={img} 
+                        alt="Botanical Extraction Blueprint detailing whole banana peel and stamen biochemical processing"
+                        className='healthtips-img' />
 
+                   </div>
                 </div>
 
             </div>

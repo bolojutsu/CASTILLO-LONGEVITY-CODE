@@ -1,37 +1,28 @@
 // components/Footer.tsx
 import React from 'react';
 
+interface LinkItem {
+    label: string;
+    href: string;
+}
+
 const Footer: React.FC = () => {
-    const currentYear = 2026;
+    const currentYear = new Date().getFullYear();
 
-    const exploreLinks = ['Home', 'About', 'Bio', 'Health Tips'];
-    const serviceLinks = ['Consultation', 'Book us'];
+    const exploreLinks: LinkItem[] = [
+        { label: 'Home', href: '/' },
+        { label: 'About', href: '/#about' },
+        { label: 'Bio', href: '/learn-more#bio' },
+        { label: 'Health Tips', href: '/learn-more#healthtips' },
+    ];
 
-    // Utilizing traditional integer-based loops to build out list elements
-    const exploreElements = [];
-    for (let i = 0; i < exploreLinks.length; i++) {
-        const linkText = exploreLinks[i];
-        const linkHref = `#${linkText.toLowerCase().replace(' ', '')}`;
-        exploreElements.push(
-            <li key={i}>
-                <a href={linkHref}>{linkText}</a>
-            </li>
-        );
-    }
-
-    const serviceElements = [];
-    for (let i = 0; i < serviceLinks.length; i++) {
-        const linkText = serviceLinks[i];
-        const linkHref = `#${linkText.toLowerCase().replace(' ', '')}`;
-        serviceElements.push(
-            <li key={i}>
-                <a href={linkHref}>{linkText}</a>
-            </li>
-        );
-    }
+    const serviceLinks: LinkItem[] = [
+        { label: 'Consultation', href: '/#consultation' },
+        { label: 'Book us', href: '/#consultation' },
+    ];
 
     return (
-        <footer className="site-footer">
+        <footer className="site-footer" id="footer">
             <div className="footer-container">
                 {/* Branding and Vision Statement */}
                 <div className="footer-brand">
@@ -47,14 +38,22 @@ const Footer: React.FC = () => {
                     <div className="footer-column">
                         <h4>Explore</h4>
                         <ul>
-                            {exploreElements}
+                            {exploreLinks.map((link) => (
+                                <li key={link.label}>
+                                    <a href={link.href}>{link.label}</a>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                     
                     <div className="footer-column">
                         <h4>Services</h4>
                         <ul>
-                            {serviceElements}
+                            {serviceLinks.map((link) => (
+                                <li key={link.label}>
+                                    <a href={link.href}>{link.label}</a>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>

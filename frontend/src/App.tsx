@@ -1,4 +1,5 @@
 import Header from './components/header.tsx';
+import Header2 from './components/header2.tsx';
 import Hero from './components/hero.tsx';
 import About from './components/about.tsx';
 import Testimonies from './components/testimonies.tsx';
@@ -8,7 +9,6 @@ import HealthTips from './components/healthTips.tsx';
 import ChatWidget from './components/chatbot.tsx';
 import Success from './components/success.tsx';
 import ConsultationGateway from './components/consultationGateway.tsx';
-import { Analytics } from '@vercel/analytics/next';
 import './index.css'
 
 function App() {
@@ -25,12 +25,11 @@ function App() {
         ) : isLearnMorePage ? (
           /* Render only the requested components for the Learn More page */
           <>
-            <Header />
+            <Header2/>
             <Bio />
             <Testimonies />
             <HealthTips />
             <Footer />
-            <Analytics/>
           </>
         ) : (
           /* Your normal single-page website landing view */
@@ -40,7 +39,6 @@ function App() {
             <About />
             <ConsultationGateway />
             <Footer />
-            <Analytics/>
           </>
         )}
       </main>
