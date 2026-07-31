@@ -6,10 +6,8 @@ const Header2 = () => {
             <nav className="nav-bar">
                 <div className="nav-links">
                     <a href="/">Home</a>
-                    <a href="#bio">BIO</a>
-                    <a href="#testimonies">Testimonies</a>
-                    <a href="#healthtips">Health Tips</a>
-                    <a href="#footer" className="nav-cta">Contact</a>
+                    <a href="#about">About</a>
+                    <a href="#gateway" className="nav-cta">BOOK US</a>
                 </div>
             </nav>
         </header>
