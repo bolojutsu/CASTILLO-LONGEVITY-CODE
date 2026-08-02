@@ -2,7 +2,6 @@ import { useState } from "react";
 import { createCheckoutSession } from "../configs/pricing";
 import { submitContactForm } from "../configs/contact";
 
-
 const ConsultationGateway = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -23,35 +22,38 @@ const ConsultationGateway = () => {
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleFormSubmit = async (e: React.SubmitEvent) => {
+    const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) =>  {
         e.preventDefault();
-        setFormStatus({ type: 'loading', message: 'Transmitting encrypted protocol...' });
-
+        setFormStatus({type: 'loading', message: 'Transmitting encrpyted protocol...'});
         const result = await submitContactForm(formData);
 
         if (result.success) {
-            setFormStatus({ 
-                type: 'success', 
-                message: 'Intake file initiated successfully. Please proceed to payment below to lock in your priority slot.' 
+            setFormStatus({
+                type: 'success',
+                message: "Intake file initiated successfully. Please proceed to payment below to lock in your priority slot."
             });
-            // Keep form data available or clear depending on preference
-        } else {
-            setFormStatus({ type: 'error', message: result.message });
+        }else {
+            setFormStatus({type: 'error', message: result.message});
         }
-    };
+    }
 
-    // Stripe Checkout: Single Payment triggering
+    // Stripe Checkout: Single Payment Triggering
     const handlePayment = async (e: React.MouseEvent) => {
         e.preventDefault();
+
+        if (formStatus.type !== "success") {
+            setPaymentError("Please complete your clinical intake abouve before proceding to payment.");
+            return;
+        }
+
         setPaymentLoading(true);
         setPaymentError(null);
 
-        // Single flat-fee tier token
         const result = await createCheckoutSession("Foundation");
 
         if (result.url) {
             window.location.href = result.url;
-        } else if (result.error) {
+        }else if (result.error) {
             setPaymentError(result.error);
             setPaymentLoading(false);
         }
@@ -70,7 +72,7 @@ const ConsultationGateway = () => {
                         longevity track mapping environment.
                     </p>
                 </div>
-
+ 
                 <div className="gateway-grid">
                     
                     {/* Left: Intake Intake Form */}
@@ -90,7 +92,7 @@ const ConsultationGateway = () => {
                                     disabled={formStatus.type === 'loading'}
                                 />
                             </div>
-
+ 
                             <div className="form-group">
                                 <label htmlFor="email">Email Address</label>
                                 <input
@@ -104,7 +106,7 @@ const ConsultationGateway = () => {
                                     disabled={formStatus.type === 'loading'}
                                 />
                             </div>
-
+ 
                             <div className="form-group">
                                 <label htmlFor="message">Clinical Inquiries / Notes</label>
                                 <textarea
@@ -118,11 +120,11 @@ const ConsultationGateway = () => {
                                     disabled={formStatus.type === 'loading'}
                                 ></textarea>
                             </div>
-
+ 
                             <button type="submit" className="form-submit-btn" disabled={formStatus.type === 'loading'}>
                                 {formStatus.type === 'loading' ? 'Transmitting...' : 'Register Secure Intake File'}
                             </button>
-
+ 
                             {formStatus.type !== 'idle' && (
                                 <div className={`form-feedback feedback-${formStatus.type}`}>
                                     {formStatus.message}
@@ -130,7 +132,7 @@ const ConsultationGateway = () => {
                             )}
                         </form>
                     </div>
-
+ 
                     {/* Right: Flattened Investment Tier */}
                     <div className="gateway-pricing-card">
                         <h2>Step 2: Program Access Fee</h2>
@@ -142,7 +144,7 @@ const ConsultationGateway = () => {
                                 <span className="amount">$1000 </span>
                                 <span className="period">/ One-time setup fee</span>
                             </div>
-
+ 
                             <div className="plan-divider" />
                             
                             <ul className="plan-features">
@@ -163,13 +165,20 @@ const ConsultationGateway = () => {
                                     Direct email follow-ups within 48 hours
                                 </li>
                             </ul>
-
+ 
                             {paymentError && <p className="error-text">{paymentError}</p>}
-
+ 
+                            {formStatus.type !== 'success' && (
+                                <p className="gateway-locked-hint">
+                                    Complete Step 1: Clinical Intake to unlock payment.
+                                </p>
+                            )}
+ 
                             <button 
                                 onClick={handlePayment} 
                                 className="plan-btn featured-btn" 
-                                disabled={paymentLoading}
+                                disabled={paymentLoading || formStatus.type !== 'success'}
+                                aria-disabled={paymentLoading || formStatus.type !== 'success'}
                             >
                                 {paymentLoading ? "Deploying Gateway..." : "Proceed to Secure Payment"}
                             </button>
@@ -178,11 +187,10 @@ const ConsultationGateway = () => {
                             Secured transaction layer powered by Stripe. One-time charge. No hidden recurring logic.
                         </p>
                     </div>
-
+ 
                 </div>
             </div>
         </section>
     );
 }
-
-export default ConsultationGateway;
+export default ConsultationGateway
