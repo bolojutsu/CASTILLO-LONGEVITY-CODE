@@ -1,16 +1,16 @@
 /* src/index.css */
 @import './styles/global.css';
-@import './styles/header.css';
-@import './styles/hero.css';
-@import './styles/about.css';
-@import './styles/testimonials.css';
-@import './styles/bio.css';
-@import './styles/healthTips.css';
+@import './styles/mainPage/header.css';
+@import './styles/mainPage/hero.css';
+@import './styles/mainPage/about.css';
+@import './styles/learnMorePage/testimonials.css';
+@import './styles/learnMorePage/bio.css';
+@import './styles/learnMorePage/healthTips.css';
 @import './styles/chatbot.css';
 @import './styles/success.css';
-@import './styles/consultationGateway.css';
-@import './styles/privacy.css';
-@import './styles/terms.css';
-@import './styles/disclaimer.css';
-@import './styles/refund.css';
+@import './styles/mainPage/consultationGateway.css';
+@import './styles/legalStyles/privacy.css';
+@import './styles/legalStyles/terms.css';
+@import './styles/legalStyles/refund.css';
+@import './styles/legalStyles/disclaimer.css';
 @import './styles/footer.css';
