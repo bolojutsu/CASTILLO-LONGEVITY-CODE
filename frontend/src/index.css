@@ -9,5 +9,8 @@
 @import './styles/chatbot.css';
 @import './styles/success.css';
 @import './styles/consultationGateway.css';
+@import './styles/privacy.css';
+@import './styles/terms.css';
+@import './styles/disclaimer.css';
+@import './styles/refund.css';
 @import './styles/footer.css';
-
