@@ -10,8 +10,8 @@ header {
   align-items: center;
   padding: 0 8%;
   background-color: rgba(251, 251, 250, 0.85);
-  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   z-index: 100;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
@@ -134,18 +134,19 @@ header .logo {
 
   .nav-links {
     position: fixed;
-    top: 80px; /* Aligns right below header */
+    top: 80px;
+    /* Aligns right below header */
     left: 0;
     width: 100%;
     height: calc(100vh - 80px);
     background-color: rgba(251, 251, 250, 0.98);
-    backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 32px;
-    
+
     /* Closed state transition */
     opacity: 0;
     pointer-events: none;
