@@ -1,6 +1,4 @@
 // components/Footer.tsx
-import React from 'react';
-
 interface LinkItem {
     label: string;
     href: string;
@@ -20,6 +18,13 @@ const Footer: React.FC = () => {
         { label: 'Consultation', href: '/#consultation' },
         { label: 'Book us', href: '/#consultation' },
     ];
+
+    const legalLinks: LinkItem[] = [
+        { label: 'Terms Of Service', href: '/terms' },
+        { label: 'Privacy Policy', href: '/privacy' },
+        { label: 'Medical Disclaimer', href: '/disclaimer'},
+        { label: 'Refund Policy', href: '/refunds'},
+    ]
 
     return (
         <footer className="site-footer" id="footer">
@@ -56,6 +61,20 @@ const Footer: React.FC = () => {
                             ))}
                         </ul>
                     </div>
+
+                    <div className='footer-column'>
+                        <h4>Legal</h4>
+                        <ul>
+                            {legalLinks.map((link) => (
+                                <li key={link.label}>
+                                    <a href={link.href}>{link.label}</a>
+                                </li>
+                            ))}
+                        </ul>
+
+                    </div>
+
+
                 </div>
             </div>
             

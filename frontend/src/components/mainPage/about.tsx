@@ -1,4 +1,4 @@
-import img from "../images/Ricky.png"
+import img from "../../images/Ricky.png";
 const About = () => {
     return (
         <section className="About" id="about">

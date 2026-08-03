@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { createCheckoutSession } from "../configs/pricing";
-import { submitContactForm } from "../configs/contact";
+import { createCheckoutSession } from "../../configs/pricing";
+import { submitContactForm } from "../../configs/contact";
 
 const ConsultationGateway = () => {
     const [formData, setFormData] = useState({

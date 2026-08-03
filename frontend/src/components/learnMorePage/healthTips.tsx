@@ -1,4 +1,4 @@
-import img from '../images/Gemini_Generated_Image_bfgnpsbfgnpsbfgn.png';
+import img from "../../images/Gemini_Generated_Image_ajozvuajozvuajoz.png"
 const HealthTips = () => {
     return (
         <section className="HealthTips" id="healthtips">
