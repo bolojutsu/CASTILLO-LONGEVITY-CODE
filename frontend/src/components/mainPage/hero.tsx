@@ -10,8 +10,7 @@ const Hero = () => {
                     seeking to build healthier daily habits and improve overall well-being.
                 </p>
                 <div className="hero-btn-group">
-                    <a href="#gateway-header" className="hero-btn hero-btn-primary">Contact US</a>
-                    <a href="/learn-more" className="hero-btn hero-btn-secondary">Learn more</a>
+                    <a href="/learn-more" className="hero-btn hero-btn-primary">Learn more</a>
                 </div>
             </div>
         </section>

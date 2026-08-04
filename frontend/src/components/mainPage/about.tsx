@@ -31,9 +31,7 @@ const About = () => {
                         Welcome to your health.
                     </p>
 
-                    <button className="about-btn">
-                        Start testing
-                    </button>
+                    <a href="/gateway" className="about-btn">Contact US</a>
                 </div>
 
             </div>

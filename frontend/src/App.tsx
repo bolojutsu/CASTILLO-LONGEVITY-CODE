@@ -13,12 +13,14 @@ import Terms from './components/legalLinks/terms.tsx';
 import Disclaimer from './components/legalLinks/medicalDisclaimer.tsx';
 import Refund from './components/legalLinks/refund.tsx';
 import ConsultationGateway from './components/mainPage/consultationGateway.tsx';
-import './index.css'
+import './index.css';
 
 function App() {
-  const path  = window.location.pathname;
-  const isSuccessPage = window.location.pathname === '/success';
+  const path = window.location.pathname;
+  const isSuccessPage = path === '/success';
   const isLearnMorePage = path === '/learn-more';
+  const isGatewayPage = path === '/gateway';
+  const isLegalPage = ['/privacy', '/terms', '/disclaimer', '/refunds'].includes(path);
 
   const renderLegalPage = () => {
     switch (path) {
@@ -35,21 +37,24 @@ function App() {
     }
   };
 
-  const isLegalPage = ['/privacy', '/terms', '/disclaimer', '/refunds'].includes(path);
+  const renderContent = () => {
+    if (isSuccessPage) {
+      return <Success />;
+    }
 
-  return (
-    <main>
-      {isSuccessPage ? (
-        <Success />
-      ) : isLegalPage ? (
-        /* Legal page layout with standard header/footer */
+    if (isLegalPage) {
+      return (
         <>
           <div className="max-w-4xl mx-auto px-4 py-12">
             {renderLegalPage()}
           </div>
           <Footer />
         </>
-      ) : isLearnMorePage ? (
+      );
+    }
+
+    if (isLearnMorePage) {
+      return (
         <>
           <Header2 />
           <Bio />
@@ -57,17 +62,31 @@ function App() {
           <HealthTips />
           <Footer />
         </>
-      ) : (
+      );
+    }
+
+    if (isGatewayPage) {
+      return (
         <>
           <Header />
-          <Hero />
-          <About />
           <ConsultationGateway />
           <Footer />
         </>
-      )}
-    </main>
-  );
+      );
+    }
+
+    // Default Main Page
+    return (
+      <>
+        <Header />
+        <Hero />
+        <About />
+        <Footer />
+      </>
+    );
+  };
+
+  return <main>{renderContent()}</main>;
 }
 
-export default App
+export default App;

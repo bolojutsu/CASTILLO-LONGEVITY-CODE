@@ -52,6 +52,7 @@
 .hero-btn {
   padding: 16px 36px;
   border-radius: 4px;
+  width: 100%;
   font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;

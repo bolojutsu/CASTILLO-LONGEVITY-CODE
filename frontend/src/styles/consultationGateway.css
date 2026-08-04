@@ -1,0 +1,308 @@
+/* ==========================================================================
+   CONSULTATION GATEWAY CONTAINER (Warm Cream Aesthetic Matched to About)
+   ========================================================================== */
+   .ConsultationGateway {
+    padding: 120px 8%;
+    background-color: #F9F7F1; /* Warm cream background */
+    color: #2E3032; /* Charcoal primary text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  
+  .gateway-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  /* Header Context */
+  .gateway-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  
+  .gateway-subtitle {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: #B4603E; /* Rusty orange accent */
+    margin-bottom: 12px;
+  }
+  
+  .gateway-header h1 {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: #2E3032;
+    margin: 0 0 16px 0;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+  }
+  
+  .gateway-header p {
+    font-size: 17px;
+    color: #555555;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+  /* ==========================================================================
+       SPLIT TWO-COLUMN GRID ARCHITECTURE
+       ========================================================================== */
+  .gateway-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  
+  /* Desktop Upgrade to Side-by-Side */
+  @media (min-width: 968px) {
+    .gateway-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+  }
+  
+  /* ==========================================================================
+       CARDS & WRAPPERS
+       ========================================================================== */
+  .gateway-form-card,
+  .gateway-pricing-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  }
+  
+  .gateway-form-card h2,
+  .gateway-pricing-card h2 {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: #2E3032;
+    border-bottom: 1px solid #EAEAEA;
+    padding-bottom: 14px;
+  }
+  
+  /* ==========================================================================
+       STEP 1: INTAKE FORM ELEMENTS
+       ========================================================================== */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #666666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    background: #FAFAFA;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    padding: 14px 16px;
+    color: #2E3032;
+    font-size: 15px;
+    transition: all 0.2s ease;
+    font-family: inherit;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #B4603E;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 0 3px rgba(180, 96, 62, 0.12);
+  }
+  
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: #A0AEC0;
+  }
+  
+  /* Submission Action Buttons */
+  .form-submit-btn,
+  .plan-btn {
+    background-color: transparent;
+    border: 1px solid #B4603E;
+    color: #B4603E;
+    padding: 16px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+  }
+  
+  .form-submit-btn:hover {
+    background-color: rgba(180, 96, 62, 0.05);
+    border-color: #964f33;
+    color: #964f33;
+  }
+  
+  /* Form Success & Error Banners */
+  .form-feedback {
+    padding: 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .feedback-loading {
+    background: #FEFCBF;
+    border: 1px solid #F6E05E;
+    color: #744210;
+  }
+  
+  .feedback-success {
+    background: #C6F6D5;
+    border: 1px solid #9AE6B4;
+    color: #22543D;
+  }
+  
+  .feedback-error {
+    background: #FED7D7;
+    border: 1px solid #FEB2B2;
+    color: #742A2A;
+  }
+  
+  /* ==========================================================================
+       STEP 2: SINGLE PRICING DISPLAY
+       ========================================================================== */
+  .single-plan-box .plan-name {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: 26px;
+    font-weight: 400;
+    margin: 0 0 4px 0;
+    color: #2E3032;
+  }
+  
+  .single-plan-box .plan-tagline {
+    font-size: 14px;
+    color: #666666;
+    margin: 0 0 24px 0;
+  }
+  
+  .single-plan-box .plan-price {
+    margin-bottom: 24px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  
+  .single-plan-box .amount {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: 44px;
+    font-weight: 400;
+    color: #B4603E; /* Warm rusty-orange accent */
+  }
+  
+  .single-plan-box .period {
+    font-size: 14px;
+    color: #718096;
+  }
+  
+  .plan-divider {
+    height: 1px;
+    background: #EAEAEA;
+    margin-bottom: 24px;
+  }
+  
+  /* Feature Unordered Lists */
+  .plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .plan-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    color: #4A5568;
+    line-height: 1.4;
+  }
+  
+  .plan-features li svg {
+    color: #B4603E; /* SVG checks match theme accent */
+    flex-shrink: 0;
+  }
+  
+  /* Highlighted Interactive Stripe Button */
+  .plan-btn.featured-btn {
+    background-color: #B4603E;
+    border-color: #B4603E;
+    color: #FFFFFF;
+  }
+  
+  .plan-btn.featured-btn:hover {
+    background-color: #964f33;
+    border-color: #964f33;
+    box-shadow: 0 4px 15px rgba(180, 96, 62, 0.25);
+  }
+  
+  .plan-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  
+  .error-text {
+    color: #E53E3E;
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  
+  .gateway-locked-hint {
+    font-size: 13px;
+    color: #718096;
+    text-align: center;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+  
+  .pricing-note {
+    font-size: 12px;
+    color: #A0AEC0;
+    text-align: center;
+    margin-top: 20px;
+    line-height: 1.5;
+  }
+  
+  /* Responsive Layout */
+  @media (max-width: 968px) {
+    .ConsultationGateway {
+      padding: 80px 6%;
+    }
+  
+    .gateway-header h1 {
+      font-size: 36px;
+    }
+  }
