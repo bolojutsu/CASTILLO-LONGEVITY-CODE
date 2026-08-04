@@ -5,10 +5,9 @@ const Hero = () => {
             <div className="hero-content">
                 <h1>CASTILLO LONGEVITY CODE</h1>
                 <p>
-                   The Castillo Code is a simple practice that yeilds impressive results.
-                   It is designed for everyone- whether you are still up on your feet managing an everyday
-                   illness, or facing the final stages or terminal cancer where chemotherapy has been exhausted,
-                   hospital options are limited, and you simply want to give yourself another chance. 
+                    The Castillo Code is a simple practice centered on 
+                    lifestyle and dietary changes. It is designed for everyone 
+                    seeking to build healthier daily habits and improve overall well-being.
                 </p>
                 <div className="hero-btn-group">
                     <a href="#gateway-header" className="hero-btn hero-btn-primary">Contact US</a>
