@@ -52,22 +52,167 @@
   }
   
   /* ==========================================================================
-       SPLIT TWO-COLUMN GRID ARCHITECTURE
+       PROGRESS INDICATOR
        ========================================================================== */
-  .gateway-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 40px;
-    align-items: start;
+  .gateway-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    max-width: 640px;
+    margin: 0 auto 48px;
   }
-  
-  /* Desktop Upgrade to Side-by-Side */
-  @media (min-width: 968px) {
-    .gateway-grid {
-      grid-template-columns: 1.1fr 0.9fr;
+
+  .progress-step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #A0AEC0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .progress-step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1.5px solid #D6D6D2;
+    color: #A0AEC0;
+    font-size: 13px;
+    transition: all 0.3s ease;
+  }
+
+  .progress-step-active {
+    color: #B4603E;
+  }
+
+  .progress-step-active .progress-step-number {
+    border-color: #B4603E;
+    background-color: #B4603E;
+    color: #FFFFFF;
+  }
+
+  .progress-step-done {
+    color: #2E3032;
+  }
+
+  .progress-step-done .progress-step-number {
+    border-color: #2E3032;
+    background-color: #2E3032;
+    color: #FFFFFF;
+  }
+
+  .progress-line {
+    width: 48px;
+    height: 1px;
+    background: #D6D6D2;
+  }
+
+  /* ==========================================================================
+       SEQUENTIAL SINGLE-COLUMN FLOW
+       ========================================================================== */
+  .gateway-flow {
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* Intake summary shown once Step 1 succeeds, replacing the form */
+  .intake-summary-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    padding: 20px 24px;
+    animation: gateway-fade-in 0.4s ease both;
+  }
+
+  .intake-summary-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #C6F6D5;
+    color: #22543D;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .intake-summary-details {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .intake-summary-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2E3032;
+    margin: 0 0 2px 0;
+  }
+
+  .intake-summary-meta {
+    font-size: 13px;
+    color: #718096;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .intake-edit-btn {
+    flex-shrink: 0;
+    background: transparent;
+    border: 1px solid #E2E8F0;
+    color: #718096;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .intake-edit-btn:hover {
+    border-color: #B4603E;
+    color: #B4603E;
+  }
+
+  /* Step 2 reveal animation */
+  .gateway-pricing-card-reveal {
+    animation: gateway-fade-in 0.5s ease both;
+    animation-delay: 0.1s;
+  }
+
+  @keyframes gateway-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
-  
+
+  @media (prefers-reduced-motion: reduce) {
+    .intake-summary-card,
+    .gateway-pricing-card-reveal {
+      animation: none;
+    }
+  }
+
   /* ==========================================================================
        CARDS & WRAPPERS
        ========================================================================== */
