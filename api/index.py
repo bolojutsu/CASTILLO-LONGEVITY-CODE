@@ -8,6 +8,7 @@ from extensions import limiter
 from contact import contact_bp
 from chat import chat_bp
 from pricing import pricing_bp
+from webhook import webhook_bp
 
 def create_app():
     app = Flask(__name__)
@@ -27,6 +28,7 @@ def create_app():
     app.register_blueprint(contact_bp)
     app.register_blueprint(chat_bp)
     app.register_blueprint(pricing_bp)
+    app.register_blueprint(webhook_bp)
     return app
 
 app = create_app()
