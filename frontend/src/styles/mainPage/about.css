@@ -30,7 +30,7 @@
 
 /* Two-Tone Title Styling */
 .about-title {
-  font-family: "Georgia", "Times New Roman", serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 58px;
   font-weight: 400;
   /* Regular weight, not bold */
@@ -41,9 +41,8 @@
 }
 
 .about-tagline {
-  font-family: "Georgia", "Times New Roman", serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 58px;
-  font-style: italic;
   font-weight: 400;
   color: #B4603E;
   /* Rusty orange/brown */
@@ -63,6 +62,7 @@
 }
 
 .about-content p {
+  font-family: "Cormorant Garamond", serif;
   font-size: 25px;
   line-height: 1.6;
   color: #333333;
@@ -79,6 +79,7 @@
 
 /* Pill-shaped Button */
 .about-btn {
+  font-family: "Cormorant Garamond", serif;
   background-color: #B4603E;
   color: #FFFFFF;
   padding: 16px 36px;

@@ -15,8 +15,9 @@ const Footer: React.FC = () => {
     ];
 
     const serviceLinks: LinkItem[] = [
-        { label: 'Consultation', href: '/#consultation' },
-        { label: 'Book us', href: '/#consultation' },
+        { label: 'Consultation', href: '/gateway' },
+        { label: 'Learn More', href: '/learn-more' },
+        { label: 'Testimonies', href: '/learn-more#testimonies'}
     ];
 
     const legalLinks: LinkItem[] = [

@@ -31,7 +31,7 @@ const Header2 = () => {
                 <div className={`nav-links ${isOpen ? 'open' : ''}`}>
                     <a href="/" onClick={closeMenu}>Home</a>
                     <a href="#about" onClick={closeMenu}>About</a>
-                    <a href="#gateway" className="nav-cta" onClick={closeMenu}>GET STARTED</a>
+                    <a href="/gateway" className="nav-cta" onClick={closeMenu}>GET STARTED</a>
                 </div>
             </nav>
         </header>
