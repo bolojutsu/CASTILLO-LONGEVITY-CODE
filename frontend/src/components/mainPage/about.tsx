@@ -28,7 +28,7 @@ const About = () => {
                     </p>
 
                     <p className="about-bold-text">
-                        Welcome to your health.
+                        Welcome to the Castillo Code.
                     </p>
 
                     <a href="/gateway" className="about-btn">Contact US</a>

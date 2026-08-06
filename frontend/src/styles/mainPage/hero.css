@@ -3,7 +3,7 @@
   position: relative;
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/hero-background.png");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/hero_background.jpeg");
   /* Note: Fixed relative path up one level */
   background-repeat: no-repeat;
   background-size: cover;

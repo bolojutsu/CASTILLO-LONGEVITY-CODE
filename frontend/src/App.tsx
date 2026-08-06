@@ -7,6 +7,7 @@ import Footer from './components/footer.tsx';
 import Bio from './components/learnMorePage/bio.tsx';
 import HealthTips from './components/learnMorePage/healthTips.tsx';
 // import ChatWidget from './components/chatbot.tsx';
+import Sources from './components/learnMorePage/sources.tsx';
 import Success from './components/success.tsx';
 import Privacy from './components/legalLinks/privacy.tsx';
 import Terms from './components/legalLinks/terms.tsx';
@@ -58,6 +59,7 @@ function App() {
         <>
           <Header2 />
           <Bio />
+          <Sources />
           <Testimonies />
           <HealthTips />
           <Footer />
