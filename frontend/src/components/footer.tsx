@@ -10,13 +10,13 @@ const Footer: React.FC = () => {
     const exploreLinks: LinkItem[] = [
         { label: 'Home', href: '/' },
         { label: 'About', href: '/#about' },
-        { label: 'Bio', href: '/learn-more#bio' },
-        { label: 'Health Tips', href: '/learn-more#healthtips' },
+        // { label: 'Bio', href: '/learn-more#bio' },
+        // { label: 'Health Tips', href: '/learn-more#healthtips' },
     ];
 
     const serviceLinks: LinkItem[] = [
         { label: 'Consultation', href: '/gateway' },
-        { label: 'Learn More', href: '/learn-more' },
+        { label: 'Sources', href: '/learn-more#sources' },
         { label: 'Testimonies', href: '/learn-more#testimonies'}
     ];
 

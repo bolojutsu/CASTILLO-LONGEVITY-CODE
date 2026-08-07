@@ -30,9 +30,10 @@ const Header2 = () => {
         {/* Navigation Links */}
         <div className={`nav-links ${isOpen ? 'open' : ''}`}>
           <a href="/" onClick={closeMenu}>Home</a>
-          <a href="#bio" onClick={closeMenu}>BIO</a>
+          {/* <a href="#bio" onClick={closeMenu}>BIO</a> */}
           <a href="#testimonies" onClick={closeMenu}>Testimonies</a>
-          <a href="#healthtips" onClick={closeMenu}>Health Tips</a>
+          <a href="#sources" onClick={closeMenu}>Sources</a>
+          {/* <a href="#healthtips" onClick={closeMenu}>Health Tips</a> */}
           <a href="#footer" className="nav-cta" onClick={closeMenu}>Contact</a>
         </div>
       </nav>

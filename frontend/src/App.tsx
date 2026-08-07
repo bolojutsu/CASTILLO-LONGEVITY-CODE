@@ -9,6 +9,7 @@ import HealthTips from './components/learnMorePage/healthTips.tsx';
 // import ChatWidget from './components/chatbot.tsx';
 import Sources from './components/learnMorePage/sources.tsx';
 import Success from './components/success.tsx';
+import LegalHeader from './components/legalLinks/legalHeader.tsx';
 import Privacy from './components/legalLinks/privacy.tsx';
 import Terms from './components/legalLinks/terms.tsx';
 import Disclaimer from './components/legalLinks/medicalDisclaimer.tsx';
@@ -47,6 +48,7 @@ function App() {
       return (
         <>
           <div className="max-w-4xl mx-auto px-4 py-12">
+            <LegalHeader/>
             {renderLegalPage()}
           </div>
           <Footer />
@@ -58,10 +60,10 @@ function App() {
       return (
         <>
           <Header2 />
-          <Bio />
+          {/* <Bio /> */}
           <Sources />
           <Testimonies />
-          <HealthTips />
+          {/* <HealthTips /> */}
           <Footer />
         </>
       );

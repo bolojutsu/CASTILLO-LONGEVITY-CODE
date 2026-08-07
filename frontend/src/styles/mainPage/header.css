@@ -1,6 +1,6 @@
 /* Header Styles */
 header {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -133,8 +133,8 @@ header .logo {
   }
 
   .nav-links {
-    position: fixed;
-    top: 80px;
+    position: absolute;
+    top: 100%;
     /* Aligns right below header */
     left: 0;
     width: 100%;
