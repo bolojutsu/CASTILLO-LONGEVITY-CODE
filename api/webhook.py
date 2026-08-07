@@ -41,11 +41,18 @@ def stripe_webhook():
     event_type = getattr(event, "type", None)
 
     try:
-        if event_type == "checkout.session.completed":
+        if event_type in ("checkout.session.completed", "checkout.session.async_payment_succeeded"):
+            # Both events represent a session that ended in a successful payment.
+            # For delayed/async payment methods, "completed" can fire before the
+            # payment is actually confirmed — handle_checkout_completed checks
+            # payment_status itself, so routing both events through it is safe.
             handle_checkout_completed(event["data"]["object"])
         elif event_type == "checkout.session.async_payment_failed":
             session = event["data"]["object"]
             print(f"[Stripe Webhook] Async payment failed for session {getattr(session, 'id', 'unknown')}")
+        elif event_type == "checkout.session.expired":
+            session = event["data"]["object"]
+            print(f"[Stripe Webhook] Checkout session expired (abandoned): {getattr(session, 'id', 'unknown')}")
         else:
             # Unhandled event types are expected — Stripe sends many event types
             # by default. Acknowledging with 200 tells Stripe not to retry.
@@ -64,8 +71,22 @@ def handle_checkout_completed(session):
     This is the source of truth that a payment actually succeeded — unlike the
     browser redirect to /success, which can fail to fire (closed tab, crashed
     browser, flaky network) even after a real, successful charge.
+
+    Note: checkout.session.completed can fire before payment is actually
+    confirmed if a delayed/async payment method is used (bank debits, etc.) —
+    payment_status is the real signal, not just receiving this event.
     """
     session_id = getattr(session, "id", None)
+    payment_status = getattr(session, "payment_status", None)
+
+    if payment_status != "paid":
+        # Not an error — this is the expected shape for a delayed payment method
+        # that hasn't confirmed yet. We'll get a proper signal via a follow-up
+        # checkout.session.async_payment_succeeded (routed through this same
+        # function) or checkout.session.async_payment_failed event.
+        print(f"[Stripe Webhook] Session {session_id} completed but not yet paid (payment_status={payment_status}). Awaiting async confirmation.")
+        return
+
     customer_details = getattr(session, "customer_details", None)
     customer_email = getattr(customer_details, "email", None) if customer_details else None
     amount_total = getattr(session, "amount_total", None)
