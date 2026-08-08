@@ -13,7 +13,7 @@ const LegalHeader = () => {
 
     return (
         <header className="legal-site-header">
-            <h1 className="logo">CASTILLO LONGEVITY CODE</h1>
+            <a href="/home" className="logo">CASTILLO LONGEVITY CODE</a>
             <nav className="nav-bar">
 
                 {/* {Mobile Hamburger Toggle Button */}

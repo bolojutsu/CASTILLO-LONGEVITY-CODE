@@ -22,6 +22,7 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     margin: 0;
+    text-decoration: none;
   }
   
   header.legal-site-header .logo a {
