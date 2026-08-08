@@ -9,7 +9,7 @@ const About = () => {
                         The Castillo Code was founded with one singular purpose: 
                     </h2>
                     <h2 className="about-tagline">
-                        empower you to harness what we throw away everyday to support lasting vitality.
+                        Empower you to harness what we throw away everyday to support lasting vitality.
                     </h2>
                 </div>
 
@@ -26,11 +26,6 @@ const About = () => {
                         ingredient becomes your simplest, most powerful daily practice. It turns ordinary nutrition 
                         into lasting energy and resilience.
                     </p>
-
-                    <p className="about-bold-text">
-                        Welcome to the Castillo Code.
-                    </p>
-
                     <a href="/gateway" className="about-btn">Contact US</a>
                 </div>
 

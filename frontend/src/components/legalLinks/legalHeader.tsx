@@ -12,7 +12,7 @@ const LegalHeader = () => {
 
 
     return (
-        <header>
+        <header className="legal-site-header">
             <h1 className="logo">CASTILLO LONGEVITY CODE</h1>
             <nav className="nav-bar">
 
@@ -28,10 +28,10 @@ const LegalHeader = () => {
                 </button>
 
                 <div className={`nav-links ${isOpen ? 'open' : ''}`}>
-                    <a href="/" onClick={closeMenu}>Terms Of Service</a>
-                    <a href="">Privacy Policy</a>
-                    <a href="#about" onClick={closeMenu}>Medical Disclaimer</a>
-                    <a href="/gateway" className="nav-cta" onClick={closeMenu}>Refund Policy</a>
+                    <a href="/terms" onClick={closeMenu}>Terms Of Service</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/disclaimer" onClick={closeMenu}>Medical Disclaimer</a>
+                    <a href="/refunds" className="nav-cta-legal-header" onClick={closeMenu}>Refund Policy</a>
                 </div>
             </nav>
         </header>

@@ -1,6 +1,6 @@
 const Refund = () => {
     return (
-        <div className="legal-page refund-page">
+        <div className="legal-page refund-page" id="refund">
             <div className="legal-header">
                 <span className="legal-eyebrow">Legal</span>
                 <h1>Refund Policy</h1>

@@ -1,6 +1,6 @@
 const Privacy = () => {
     return (
-        <div className="legal-page privacy-page">
+        <div className="legal-page privacy-page" id="privacy">
             <div className="legal-header">
                 <span className="legal-eyebrow">Legal</span>
                 <h1>Privacy Policy</h1>

@@ -1,6 +1,6 @@
 const Disclaimer = () => {
     return (
-        <div className="legal-page disclaimer-page">
+        <div className="legal-page disclaimer-page" id="disclaimer">
             <div className="legal-header">
                 <span className="legal-eyebrow">Legal</span>
                 <h1>Medical Disclaimer</h1>

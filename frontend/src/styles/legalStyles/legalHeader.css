@@ -66,7 +66,7 @@
     left: 50%;
     width: 0%;
     height: 2px;
-    background-color: #16a34a;
+    background-color: #0b1311;
     transition: width 0.3s ease, left 0.3s ease;
   }
   
@@ -82,18 +82,12 @@
   
   /* CTA Link (Refund Policy) */
   header.legal-site-header .nav-links a.nav-cta {
-    background-color: #16a34a;
-    color: #ffffff;
+    color:#0b1311;
     padding: 8px 18px;
     border-radius: 6px;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
   }
-  
-  header.legal-site-header .nav-links a.nav-cta:hover {
-    background-color: #15803d;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.2);
-  }
+
   
   /* Mobile Hamburger Toggle */
   header.legal-site-header .hamburger {

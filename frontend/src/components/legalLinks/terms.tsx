@@ -1,6 +1,6 @@
 const Terms = () => {
     return (
-        <div className="legal-page terms-page">
+        <div className="legal-page terms-page" id="terms">
             <div className="legal-header">
                 <span className="legal-eyebrow">Legal</span>
                 <h1>Terms of Service</h1>
