@@ -4,7 +4,6 @@ load_dotenv()
 
 from flask import Flask
 from flask_cors import CORS
-from extensions import limiter
 from contact import contact_bp
 from chat import chat_bp
 from pricing import pricing_bp
@@ -13,7 +12,6 @@ from webhook import webhook_bp
 def create_app():
     app = Flask(__name__)
     app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024
-    limiter.init_app(app)
 
     cors_origins = [
         "http://localhost:5173",

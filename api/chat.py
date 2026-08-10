@@ -2,7 +2,6 @@ from flask import Blueprint, request, jsonify, Response, stream_with_context
 from openai import OpenAI
 import openai
 import os
-from extensions import limiter
 
 chat_bp = Blueprint("chat", __name__)
 
@@ -49,7 +48,6 @@ def validate_messages(messages):
     return None
 
 @chat_bp.route("/api/chat", methods=["POST"])
-@limiter.limit("10 per minute; 100 per day")
 def chat():
     data = request.get_json(silent=True)
  

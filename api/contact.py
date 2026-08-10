@@ -1,9 +1,7 @@
 import re
 import os
 import resend
-from dotenv import load_dotenv
 from flask import Blueprint, request, jsonify
-from extensions import limiter
 
 contact_bp = Blueprint('contact', __name__)
 EMAIL_REGEX = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
@@ -14,7 +12,6 @@ SENDER_EMAIL = os.environ.get("RESEND_SENDER_EMAIL")
 
 
 @contact_bp.route('/contact', methods=['POST'])
-@limiter.limit("3 per minute; 15 per day")
 def handle_contact_submission():
     data = request.get_json()
 
