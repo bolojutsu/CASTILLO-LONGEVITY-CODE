@@ -23,12 +23,13 @@ def handle_contact_submission():
     
     name = data.get('name', '').strip()
     email = data.get('email', '').strip()
+    number = data.get('number', '').strip()
     message = data.get('message', '').strip()
 
     # 2 feild validation
-    if not name or not email or not message:
+    if not name or not email or not number or not message:
         return jsonify({
-            "error": "All fields (Name, Email, Message) are strictly required."
+            "error": "All fields (Name, Email, Number, Message) are strictly required."
         }), 400
     
     if not re.match(EMAIL_REGEX, email):
@@ -46,6 +47,7 @@ def handle_contact_submission():
                 <h3>New Booking Request</h3>
                 <p><strong>Patient Name:</strong> {name}</p>
                 <p><strong>Secure Email:</strong> {email}</p>
+                <p><strong>Phone Number:</strong> {number}</p>
                 <p><strong>Clinical Notes:</strong></p>
                 <p style="white-space: pre-wrap;">{message}</p>
             """

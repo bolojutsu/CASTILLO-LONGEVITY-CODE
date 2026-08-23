@@ -6,6 +6,7 @@ const ConsultationGateway = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+        number: '',
         message: '',
     });
 
@@ -134,6 +135,20 @@ const ConsultationGateway = () => {
                                         value={formData.email}
                                         onChange={handleInputChange}
                                         disabled={formStatus.type === 'loading'}
+                                    />
+                                </div>
+
+                                <div className="form-group">
+                                    <label htmlFor="number">Phone Number</label>
+                                    <input 
+                                        type="number"
+                                        id="number"
+                                        name="number"
+                                        required
+                                        placeholder="Phone Number"
+                                        value={formData.number}
+                                        onChange={handleInputChange}
+                                        disabled={formStatus.type === "loading"}
                                     />
                                 </div>
 
