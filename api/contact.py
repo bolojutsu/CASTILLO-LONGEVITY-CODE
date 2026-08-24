@@ -5,6 +5,7 @@ from flask import Blueprint, request, jsonify
 
 contact_bp = Blueprint('contact', __name__)
 EMAIL_REGEX = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+PHONE_REGEX = r'^\+?[1-9]\d{1,14}$'
 
 resend.api_key = os.environ.get("RESEND_API_KEY")
 YOUR_EMAIL = os.environ.get("YOUR_EMAIL")
@@ -34,7 +35,13 @@ def handle_contact_submission():
     
     if not re.match(EMAIL_REGEX, email):
         return jsonify({"error": "Invalid email address protocol format."}), 400
+
     
+    clean_number = re.sub(r'[\s\-\(\)\.]', '', number)
+    
+    if not re.match(PHONE_REGEX, clean_number):
+        return jsonify({"error": "Invalid phone number format."}), 400
+
     # 3. Process the data (Log it to console for now)
     # In a production environment, you would hook up an email service (like SendGrid) or write to a database here.
     
@@ -84,6 +91,7 @@ def handle_contact_submission():
     print("\n--- NEW SECURE BOOKING REQUEST ---")
     print(f"Patient Name: {name}")
     print(f"Secure Email: {email}")
+    print(f"Phone Number: {number}")
     print(f"Clinical Notes: {message}")
     print("-----------------------------------\n")
 

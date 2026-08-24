@@ -141,11 +141,11 @@ const ConsultationGateway = () => {
                                 <div className="form-group">
                                     <label htmlFor="number">Phone Number</label>
                                     <input 
-                                        type="number"
+                                        type="tel"
                                         id="number"
                                         name="number"
                                         required
-                                        placeholder="Phone Number"
+                                        placeholder="+1 (555) 000-0000"
                                         value={formData.number}
                                         onChange={handleInputChange}
                                         disabled={formStatus.type === "loading"}
