@@ -3,7 +3,7 @@ import stripe
 import resend
 from flask import Blueprint, request, jsonify
 
-webhook_bp = Blueprint("webhook", __name__)
+stripe_webhook_bp = Blueprint("webhook", __name__)
 
 STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET")
 YOUR_EMAIL = os.environ.get("YOUR_EMAIL")
@@ -11,7 +11,7 @@ SENDER_EMAIL = os.environ.get("RESEND_SENDER_EMAIL")
 resend.api_key = os.environ.get("RESEND_API_KEY")
 
 
-@webhook_bp.route("/webhook/stripe", methods=["POST"])
+@stripe_webhook_bp.route("/webhook/stripe", methods=["POST"])
 def stripe_webhook():
     # Intentionally NOT rate-limited: Stripe's own signature check below is the
     # real authentication for this route, and Stripe needs to be able to deliver
