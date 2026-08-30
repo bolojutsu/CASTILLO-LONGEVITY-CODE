@@ -4,12 +4,12 @@ load_dotenv()
 
 from flask import Flask
 from flask_cors import CORS
-from limiter import limiter
-from contact import contact_bp
-from chat import chat_bp
-from pricing import pricing_bp
-from stripe_webhook import stripe_webhook_bp
-from resend_webhook import resend_webhook_bp
+from configs.limiter import limiter
+from configs.contact import contact_bp
+from configs.chat import chat_bp
+from configs.pricing import pricing_bp
+from webhooks.stripe_webhook import stripe_webhook_bp
+from webhooks.resend_webhook import resend_webhook_bp
 
 def create_app():
     app = Flask(__name__)
