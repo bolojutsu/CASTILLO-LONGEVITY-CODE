@@ -1,7 +1,7 @@
 import os
 from flask import Blueprint, request, jsonify
 import stripe
-from limiter import limiter
+from configs.limiter import limiter
 
 pricing_bp = Blueprint("pricing", __name__)
 stripe.api_key = os.environ.get('STRIPE_API_KEY')
