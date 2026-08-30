@@ -4,6 +4,7 @@ load_dotenv()
 
 from flask import Flask
 from flask_cors import CORS
+from limiter import limiter
 from contact import contact_bp
 from chat import chat_bp
 from pricing import pricing_bp
@@ -24,11 +25,20 @@ def create_app():
         cors_origins.append(frontend_url)
     CORS(app, origins=cors_origins)
 
+    limiter.init_app(app)
+
     app.register_blueprint(contact_bp)
     app.register_blueprint(chat_bp)
     app.register_blueprint(pricing_bp)
     app.register_blueprint(stripe_webhook_bp)
     app.register_blueprint(resend_webhook_bp)
+
+    # Webhooks are authenticated by signature verification (Stripe/Svix),
+    # not by IP — and providers need to be able to retry deliveries without
+    # getting throttled. Rate limiting them would risk dropping real events.
+    limiter.exempt(stripe_webhook_bp)
+    limiter.exempt(resend_webhook_bp)
+
     return app
 
 app = create_app()
