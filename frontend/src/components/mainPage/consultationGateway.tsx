@@ -159,7 +159,7 @@ const ConsultationGateway = () => {
                                         name="message"
                                         rows={4}
                                         required
-                                        placeholder="Detail your personal health objectives or structural inquiries..."
+                                        placeholder="Detail your personal health objectives and what you are looking for in this consultation..."
                                         value={formData.message}
                                         onChange={handleInputChange}
                                         disabled={formStatus.type === 'loading'}
@@ -196,7 +196,7 @@ const ConsultationGateway = () => {
                     {/* Step 2: Payment — only revealed after intake succeeds */}
                     {intakeComplete && (
                         <div className="gateway-pricing-card gateway-pricing-card-reveal" ref={paymentStepRef}>
-                            <h2>Step 2: Program Access Fee</h2>
+                            <h2>Step 2: Consultation Fee</h2>
                             <div className="single-plan-box">
                                 <p className="plan-name">Foundation Track</p>
                                 <p className="plan-tagline">Comprehensive alignment toward optimized vitality.</p>
