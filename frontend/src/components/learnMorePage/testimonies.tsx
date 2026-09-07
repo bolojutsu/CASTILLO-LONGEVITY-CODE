@@ -32,13 +32,13 @@ const testimonialData: Testimonial[] = [
 const Testimonies = () => {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
 
-    const nextSlide = () => {
-        setCurrentIndex((prev) => (prev === testimonialData.length - 1 ? 0 : prev + 1));
-    };
+    // const nextSlide = () => {
+    //     setCurrentIndex((prev) => (prev === testimonialData.length - 1 ? 0 : prev + 1));
+    // };
 
-    const prevSlide = () => {
-        setCurrentIndex((prev) => (prev === 0 ? testimonialData.length - 1 : prev - 1));
-    };
+    // const prevSlide = () => {
+    //     setCurrentIndex((prev) => (prev === 0 ? testimonialData.length - 1 : prev - 1));
+    // };
 
     // Format current file indicator (e.g., FILE — 01 / 03)
     const currentFormattedIndex = String(currentIndex + 1).padStart(2, "0");
