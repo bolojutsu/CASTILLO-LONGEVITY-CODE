@@ -7,6 +7,15 @@ pricing_bp = Blueprint("pricing", __name__)
 stripe.api_key = os.environ.get("STRIPE_API_KEY")
 FRONTEND_URL = os.environ.get("FRONTEND_URL", "http://localhost:5000").rstrip("/")
 
+# Cheap sanity check so it's obvious in the logs which mode you're pointed
+# at — easy to lose track of once you've got test/live keys split across
+# Vercel's Preview/Production env var scopes.
+if stripe.api_key:
+    _mode = "LIVE" if stripe.api_key.startswith("sk_live_") else "TEST"
+    print(f"[Stripe] Running in {_mode} mode (key prefix: {stripe.api_key[:12]}...)")
+else:
+    print("[Stripe] WARNING: STRIPE_API_KEY is not set.")
+
 plan_price_id = {
     "Foundation": "price_1UCmbhHvFcnfvp6wZbt32noQ",
 }
@@ -33,8 +42,8 @@ def create_checkout_session():
             ],
             # If these are recurring monthly billing packages, switch mode to 'subscription'
             mode="payment",
-            success_url=f"http://localhost:5173/success?session_id={{CHECKOUT_SESSION_ID}}",
-            cancel_url=f"http://localhost:5173/gateway",
+            success_url=f"{FRONTEND_URL}/success?session_id={{CHECKOUT_SESSION_ID}}",
+            cancel_url=f"{FRONTEND_URL}/gateway",
         )
         return jsonify({"url": checkout_session.url})
     except Exception as e:

@@ -16,11 +16,11 @@ def get_client_ip():
     return get_remote_address()
 
 
-REDIS_URL = os.environ.get("REDIS_URL")
+STORAGE_REDIS_URL = os.environ.get("STORAGE_REDIS_URL")
 
 limiter = Limiter(
     get_client_ip,
-    storage_uri=REDIS_URL if REDIS_URL else "memory://",
+    storage_uri=STORAGE_REDIS_URL if STORAGE_REDIS_URL else "memory://",
     default_limits=["200 per day", "50 per hour"],
     strategy="fixed-window",
     # If Redis has a blip, fail open rather than blocking real patients.
@@ -29,6 +29,6 @@ limiter = Limiter(
     on_breach=lambda limit: print(f"[RateLimit] Breach: {limit}"),
 )
 
-if not REDIS_URL:
+if not STORAGE_REDIS_URL:
     print("[RateLimit] WARNING: REDIS_URL not set — using in-memory storage. "
           "Limits are per-instance only and will not hold under serverless scale.")

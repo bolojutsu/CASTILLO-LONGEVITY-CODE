@@ -1,6 +1,7 @@
 import os
 import stripe
 import resend
+import redis
 from flask import Blueprint, request, jsonify
 
 stripe_webhook_bp = Blueprint("webhook", __name__)
@@ -9,6 +10,36 @@ STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET")
 YOUR_EMAIL = os.environ.get("YOUR_EMAIL")
 SENDER_EMAIL = os.environ.get("RESEND_SENDER_EMAIL")
 resend.api_key = os.environ.get("RESEND_API_KEY")
+
+# --- Idempotency store ---------------------------------------------------
+# Stripe explicitly documents at-least-once delivery — the same event can
+# arrive more than once (retries on timeout/5xx, manual redelivery from the
+# dashboard, etc). We dedupe on Stripe's event.id.
+#
+# Same Redis instance as flask_limiter and the Resend webhook (REDIS_URL),
+# so dedup state is shared across serverless instances/cold starts. Falls
+# back to a per-instance in-memory set if REDIS_URL isn't configured (e.g.
+# local dev) — same limitation as the other two: resets on restart, won't
+# hold under multiple concurrent instances.
+REDIS_URL = os.environ.get("REDIS_URL")
+_redis_client = redis.Redis.from_url(REDIS_URL) if REDIS_URL else None
+_processed_event_ids = set()  # local fallback only, used when REDIS_URL is unset
+
+PROCESSED_EVENT_TTL_SECONDS = 60 * 60 * 24 * 3  # 3 days — comfortably longer than Stripe's retry window
+
+
+def _already_processed(event_id: str) -> bool:
+    """Returns True if this event was already handled. Marks it as processed
+    as a side effect (atomically, when Redis is available)."""
+    if _redis_client:
+        key = f"processed_stripe_events:{event_id}"
+        was_set = _redis_client.set(key, "1", nx=True, ex=PROCESSED_EVENT_TTL_SECONDS)
+        return not was_set
+    else:
+        if event_id in _processed_event_ids:
+            return True
+        _processed_event_ids.add(event_id)
+        return False
 
 
 @stripe_webhook_bp.route("/webhook/stripe", methods=["POST"])
@@ -37,6 +68,12 @@ def stripe_webhook():
         # response rather than letting an unhandled exception surface.
         print(f"[Stripe Webhook] Unexpected error verifying event: {e}")
         return jsonify({"error": "Unable to process webhook"}), 400
+
+    event_id = getattr(event, "id", None)
+    if event_id and _already_processed(event_id):
+        # Already handled this exact event — ack and stop, don't re-send
+        # notification emails etc.
+        return jsonify({"received": True, "duplicate": True}), 200
 
     event_type = getattr(event, "type", None)
 
