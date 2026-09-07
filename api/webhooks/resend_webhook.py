@@ -1,6 +1,7 @@
 import os
 from flask import Blueprint, request, jsonify
 from svix.webhooks import Webhook, WebhookVerificationError
+import redis
 
 resend_webhook_bp = Blueprint("resend_webhook", __name__)
 
@@ -10,12 +11,31 @@ RESEND_WEBHOOK_SECRET = os.environ.get("RESEND_WEBHOOK_SECRET")
 # Resend/Svix delivers at-least-once, so the same event can arrive more than
 # once (retries, redelivery, etc). We dedupe on svix-id.
 #
-# NOTE: this is in-memory, same limitation as Flask-Limiter's current store —
-# it resets on every deploy/restart and won't work across multiple instances.
-# When you move rate limiting to Upstash Redis, move this into the same
-# Redis instance (SETNX processed_events:{svix_id} with a TTL of ~1 day is
-# plenty, since Svix's own retry window is far shorter than that).
-_processed_event_ids = set()
+# Backed by the same Redis instance as flask_limiter (REDIS_URL) so dedup
+# state is shared across serverless instances/cold starts. Falls back to a
+# per-instance in-memory set if REDIS_URL isn't configured (e.g. local dev),
+# with the same limitation flask_limiter has: it resets on restart and
+# won't hold under multiple concurrent instances.
+REDIS_URL = os.environ.get("REDIS_URL")
+_redis_client = redis.Redis.from_url(REDIS_URL) if REDIS_URL else None
+_processed_event_ids = set()  # local fallback only, used when REDIS_URL is unset
+
+PROCESSED_EVENT_TTL_SECONDS = 60 * 60 * 24  # 1 day — comfortably longer than Svix's retry window
+
+
+def _already_processed(svix_id: str) -> bool:
+    """Returns True if this event was already handled. Marks it as processed
+    as a side effect (atomically, when Redis is available)."""
+    if _redis_client:
+        key = f"processed_events:{svix_id}"
+        # SET NX+EX is atomic: returns None if the key already existed.
+        was_set = _redis_client.set(key, "1", nx=True, ex=PROCESSED_EVENT_TTL_SECONDS)
+        return not was_set
+    else:
+        if svix_id in _processed_event_ids:
+            return True
+        _processed_event_ids.add(svix_id)
+        return False
 
 
 @resend_webhook_bp.route("/webhook/resend", methods=["POST"])
@@ -42,10 +62,9 @@ def resend_webhook():
         return jsonify({"error": "Unable to process webhook"}), 400
 
     svix_id = headers["svix-id"]
-    if svix_id in _processed_event_ids:
+    if _already_processed(svix_id):
         # Already handled this exact delivery — ack and stop, don't re-send emails etc.
         return jsonify({"received": True, "duplicate": True}), 200
-    _processed_event_ids.add(svix_id)
 
     event_type = event.get("type")
     data = event.get("data", {})
