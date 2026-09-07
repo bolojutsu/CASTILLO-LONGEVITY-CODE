@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
     const legalLinks: LinkItem[] = [
         { label: 'Terms Of Service', href: '/terms' },
         { label: 'Privacy Policy', href: '/privacy' },
-        { label: 'Medical Disclaimer', href: '/disclaimer'},
+        { label: 'Disclaimer', href: '/disclaimer'},
         { label: 'Refund Policy', href: '/refunds'},
     ]
 

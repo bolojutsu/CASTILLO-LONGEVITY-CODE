@@ -82,16 +82,15 @@ const ConsultationGateway = () => {
 
                 {/* Header Section */}
                 <div className="gateway-header" id="gateway-header">
-                    <span className="gateway-subtitle">Secure Ecosystem Access</span>
+                    <span className="gateway-subtitle"></span>
                     <h1>Initiate Longevity Protocol</h1>
                     <p>
-                        Submit your initial clinical inquiry notes and secure your entry into the
-                        longevity track mapping environment.
+                        Submit your information, this is the beginning of your longevity journey.
                     </p>
                 </div>
 
                 {/* Progress indicator */}
-                <div className="gateway-progress">
+                {/* <div className="gateway-progress">
                     <div className={`progress-step ${!intakeComplete ? 'progress-step-active' : 'progress-step-done'}`}>
                         <span className="progress-step-number">{intakeComplete ? '✓' : '1'}</span>
                         Clinical Intake
@@ -101,7 +100,7 @@ const ConsultationGateway = () => {
                         <span className="progress-step-number">2</span>
                         Program Access Fee
                     </div>
-                </div>
+                </div> */}
 
                 <div className="gateway-flow">
 
@@ -153,7 +152,7 @@ const ConsultationGateway = () => {
                                 </div>
 
                                 <div className="form-group">
-                                    <label htmlFor="message">Clinical Inquiries / Notes</label>
+                                    <label htmlFor="message">PLEASE LET US KNOW YOUR HEALTH NEEDS OR CONCERNS</label>
                                     <textarea
                                         id="message"
                                         name="message"
@@ -167,7 +166,7 @@ const ConsultationGateway = () => {
                                 </div>
 
                                 <button type="submit" className="form-submit-btn" disabled={formStatus.type === 'loading'}>
-                                    {formStatus.type === 'loading' ? 'Transmitting...' : 'Register Secure Intake File'}
+                                    {formStatus.type === 'loading' ? 'Transmitting...' : 'Submit Request'}
                                 </button>
 
                                 {formStatus.type !== 'idle' && (

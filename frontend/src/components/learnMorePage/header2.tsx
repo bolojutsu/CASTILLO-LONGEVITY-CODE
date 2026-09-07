@@ -34,7 +34,7 @@ const Header2 = () => {
           <a href="#testimonies" onClick={closeMenu}>Testimonies</a>
           <a href="#sources" onClick={closeMenu}>Sources</a>
           {/* <a href="#healthtips" onClick={closeMenu}>Health Tips</a> */}
-          <a href="#footer" className="nav-cta" onClick={closeMenu}>Contact</a>
+          <a href="/gateway" className="nav-cta" onClick={closeMenu}>Get Started</a>
         </div>
       </nav>
     </header>

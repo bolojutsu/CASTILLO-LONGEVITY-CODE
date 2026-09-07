@@ -3,7 +3,7 @@ const Disclaimer = () => {
         <div className="legal-page disclaimer-page" id="disclaimer">
             <div className="legal-header">
                 <span className="legal-eyebrow">Legal</span>
-                <h1>Medical Disclaimer</h1>
+                <h1>Disclaimer</h1>
                 <p className="legal-updated">Last updated: August 3, 2026</p>
             </div>
 

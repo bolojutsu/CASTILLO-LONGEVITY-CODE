@@ -9,23 +9,23 @@ interface Testimonial {
 }
 
 const testimonialData: Testimonial[] = [
-    {
-        id: 1,
-        name: "Sarah Jenkins",
-        role: "Client since 2024",
-        quote: "Enrique's biochemical approach completely transformed my energy. The customized roadmap felt like a comprehensive physical upgrade."
-    },
-    {
-        id: 2,
-        name: "Dr. Marcus Vance",
-        role: "Clinical Researcher",
-        quote: "As a professional working in the medical space, I highly value precision. Castillo's dedication to research-driven, high-quality protocols yields structural, proven results."
-    },
+    // {
+    //     id: 1,
+    //     name: "Sarah Jenkins",
+    //     role: "Client since 2024",
+    //     quote: "Enrique's biochemical approach completely transformed my energy. The customized roadmap felt like a comprehensive physical upgrade."
+    // },
+    // {
+    //     id: 2,
+    //     name: "Dr. Marcus Vance",
+    //     role: "Clinical Researcher",
+    //     quote: "As a professional working in the medical space, I highly value precision. Castillo's dedication to research-driven, high-quality protocols yields structural, proven results."
+    // },
     {
         id: 3,
         name: "Elena Rostova",
         role: "Wellness Advocate",
-        quote: "The assurance of safe, long-term longevity protocols brought me here. Having a science-backed preventative strategy gives me an indisputable edge against fatigue."
+        quote: "Having a science-backed information and life style strategy gives me an indisputable edge agenst feeling fatigued and sluggish."
     }
 ];
 
@@ -48,20 +48,20 @@ const Testimonies = () => {
         <section className="Testimonies" id="testimonies">
             <div className="testimonies-container">
                 <span className="testimonies-subtitle">Real impact</span>
-                <h2>Validated experiences</h2>
+                <h2>Testimonials</h2>
                 
                 <div className="file-tag">
                     FILE — {currentFormattedIndex} / {totalFormattedCount}
                 </div>
 
                 <div className="carousel-wrapper">
-                    <button 
+                    {/* <button 
                         className="carousel-arrow prev-arrow" 
                         onClick={prevSlide} 
                         aria-label="Previous slide"
                     >
                         &#8592;
-                    </button>
+                    </button> */}
 
                     <div className="carousel-viewport">
                         <div 
@@ -80,13 +80,13 @@ const Testimonies = () => {
                         </div>
                     </div>
 
-                    <button 
+                    {/* <button 
                         className="carousel-arrow next-arrow" 
                         onClick={nextSlide} 
                         aria-label="Next slide"
                     >
                         &#8594;
-                    </button>
+                    </button> */}
                 </div>
 
                 <div className="carousel-dots-container">

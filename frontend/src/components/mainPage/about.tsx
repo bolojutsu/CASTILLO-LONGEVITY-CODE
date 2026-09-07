@@ -26,7 +26,7 @@ const About = () => {
                         ingredient becomes your simplest, most powerful daily practice. It turns ordinary nutrition 
                         into lasting energy and resilience.
                     </p>
-                    <a href="/gateway" className="about-btn">Contact US</a>
+                    <a href="/gateway" className="about-btn">Get Started</a>
                 </div>
 
             </div>
