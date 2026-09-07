@@ -51,15 +51,23 @@ def handle_contact_submission():
         parameters = {
             "from": SENDER_EMAIL,
             "to":[YOUR_EMAIL],
-            "subject": f"New Secure Booking Request - {name}",
+            "reply_to": email,
+            "subject": f"New consultation request - {name}",
             "html": f"""
-                <h3>New Booking Request</h3>
-                <p><strong>Patient Name:</strong> {name}</p>
-                <p><strong>Secure Email:</strong> {email}</p>
-                <p><strong>Phone Number:</strong> {number}</p>
-                <p><strong>Clinical Notes:</strong></p>
+                <h3>New Consultation Request</h3>
+                <p><strong>Name:</strong> {name}</p>
+                <p><strong>Email:</strong> {email}</p>
+                <p><strong>Phone:</strong> {number}</p>
+                <p><strong>Notes:</strong></p>
                 <p style="white-space: pre-wrap;">{message}</p>
-            """
+            """,
+            "text": (
+                f"New Consultation Request\n\n"
+                f"Name: {name}\n"
+                f"Email: {email}\n"
+                f"Phone: {number}\n\n"
+                f"Notes:\n{message}\n"
+            )
         }
         resend.Emails.send(parameters)
 
@@ -68,22 +76,28 @@ def handle_contact_submission():
         # NOTE: If you are using a free Resend sandbox (onboarding@resend.dev), you can ONLY 
         # send to yourself. Once you verify your custom domain, you can safely uncomment this block!
 
-        # user_parameters = {
-        #     "from": SENDER_EMAIL,
-        #     "to": [email],
-        #     "subject": "Consulttaion Request Initiated - Enrique Castillo",
-        #     "html": f"""
-        #          <div style="font-family: Arial, sans-serif; padding: 20px; color: #12201C; max-width: 600px;">
-        #              <h2 style="color: #16372E;">Hello {name},</h2>
-        #              <p>Thank you for initiating a consultation with Enrique Castillo and our longevity research ecosystem.</p>
-        #              <p>We have successfully received your clinical notes and request parameters. Our team will review your file and reach out shortly to map your personalized biological vitality track.</p>
-        #              <br />
-        #              <hr style="border: none; border-top: 1px solid rgba(18,32,28,0.08);" />
-        #              <p style="font-size: 12px; color: #63756F;">This is an automated receipt confirming your secure gateway transmission.</p>
-        #          </div>
-        #     """ 
-        # }
-        # resend.Emails.send(user_parameters)
+        user_parameters = {
+            "from": SENDER_EMAIL,
+            "to": [email],
+            "subject": "We received your consultation request - Enrique Castillo",
+            "html": f"""
+                 <div style="font-family: Arial, sans-serif; padding: 20px; color: #12201C; max-width: 600px;">
+                     <h2 style="color: #16372E;">Hello {name},</h2>
+                     <p>Thank you for reaching out to Enrique Castillo and the longevity team.</p>
+                     <p>We've received your message and someone from our team will get back to you shortly.</p>
+                     <br />
+                     <hr style="border: none; border-top: 1px solid rgba(18,32,28,0.08);" />
+                     <p style="font-size: 12px; color: #63756F;">This is an automated confirmation of your submission.</p>
+                 </div>
+            """,
+            "text": (
+                f"Hello {name},\n\n"
+                f"Thank you for reaching out to Enrique Castillo and the longevity team.\n"
+                f"We've received your message and someone from our team will get back to you shortly.\n\n"
+                f"-- This is an automated confirmation of your submission.\n"
+            )
+        }
+        resend.Emails.send(user_parameters)
 
 
     except Exception as e:
