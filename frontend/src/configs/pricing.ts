@@ -1,3 +1,5 @@
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export interface CheckoutRequest {
     planName: String;
 }
@@ -15,7 +17,7 @@ export interface VerifySessionResponse {
 
 export const createCheckoutSession = async (planName: string): Promise<CheckoutResponse> => {
     try {
-        const response = await fetch('http://localhost:5000/create-checkout-session', {
+        const response = await fetch(`${API_URL}/create-checkout-session`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -43,7 +45,7 @@ export const createCheckoutSession = async (planName: string): Promise<CheckoutR
 
 export const verifySession = async (sessionId: string): Promise<VerifySessionResponse> => {
     try {
-        const response = await fetch(`http://localhost:5000/verify-session/${sessionId}`, {
+        const response = await fetch(`${API_URL}/verify-session/${sessionId}`, {
             method: 'GET',
         });
 
