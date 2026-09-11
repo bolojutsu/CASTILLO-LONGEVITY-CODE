@@ -8,9 +8,12 @@ contact_bp = Blueprint('contact', __name__)
 EMAIL_REGEX = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
 PHONE_REGEX = r'^\+?[1-9]\d{1,14}$'
 
-resend.api_key = os.environ.get("RESEND_API_KEY")
-YOUR_EMAIL = os.environ.get("YOUR_EMAIL")
-SENDER_EMAIL = os.environ.get("RESEND_SENDER_EMAIL")
+def _env(name: str) -> str:
+    return (os.environ.get(name) or "").strip().strip('"').strip("'")
+
+resend.api_key = _env("RESEND_API_KEY")
+YOUR_EMAIL = _env("YOUR_EMAIL")
+SENDER_EMAIL = _env("RESEND_SENDER_EMAIL")
 
 
 @contact_bp.route('/contact', methods=['POST'])
@@ -47,10 +50,16 @@ def handle_contact_submission():
     # 3. Process the data (Log it to console for now)
     # In a production environment, you would hook up an email service (like SendGrid) or write to a database here.
     
+    if not resend.api_key or not YOUR_EMAIL or not SENDER_EMAIL:
+        print("[Contact] Missing RESEND_API_KEY, YOUR_EMAIL, or RESEND_SENDER_EMAIL")
+        return jsonify({
+            "error": "Email is not configured on the server."
+        }), 500
+
     try:
-        parameters = {
+        resend.Emails.send({
             "from": SENDER_EMAIL,
-            "to":[YOUR_EMAIL],
+            "to": [YOUR_EMAIL],
             "reply_to": email,
             "subject": f"New consultation request - {name}",
             "html": f"""
@@ -68,15 +77,18 @@ def handle_contact_submission():
                 f"Phone: {number}\n\n"
                 f"Notes:\n{message}\n"
             )
-        }
-        resend.Emails.send(parameters)
+        })
+    except Exception as e:
+        print(f"[Contact] Operator email failed: {e}")
+        return jsonify({
+            "error": "Email provider rejected the send. Verify the Resend domain and API key."
+        }), 500
 
-
-        # EMAIL 2: Sends an automatic confirmation receipt to the USER who filled out the form
-        # NOTE: If you are using a free Resend sandbox (onboarding@resend.dev), you can ONLY 
-        # send to yourself. Once you verify your custom domain, you can safely uncomment this block!
-
-        user_parameters = {
+    # Confirmation to the visitor is optional. Resend testing mode can only
+    # deliver to the account owner's inbox, so a failure here must not
+    # fail the intake after the operator email already went out.
+    try:
+        resend.Emails.send({
             "from": SENDER_EMAIL,
             "to": [email],
             "subject": "We received your consultation request - Enrique Castillo",
@@ -96,13 +108,9 @@ def handle_contact_submission():
                 f"We've received your message and someone from our team will get back to you shortly.\n\n"
                 f"-- This is an automated confirmation of your submission.\n"
             )
-        }
-        resend.Emails.send(user_parameters)
-
-
+        })
     except Exception as e:
-        print(f"Resend Email Error: {e}")
-        return jsonify({"error": "Internal mail server error. Please try again later."}), 500
+        print(f"[Contact] Visitor confirmation skipped: {e}")
 
     print("\n--- NEW SECURE BOOKING REQUEST ---")
     print(f"Patient Name: {name}")
