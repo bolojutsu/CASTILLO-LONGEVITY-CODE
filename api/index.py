@@ -1,5 +1,13 @@
-import os 
+import os
+import sys
+from pathlib import Path
+
 from dotenv import load_dotenv
+
+_API_DIR = Path(__file__).resolve().parent
+if str(_API_DIR) not in sys.path:
+    sys.path.insert(0, str(_API_DIR))
+
 load_dotenv()
 
 from flask import Flask
@@ -11,19 +19,29 @@ from configs.pricing import pricing_bp
 from webhooks.stripe_webhook import stripe_webhook_bp
 from webhooks.resend_webhook import resend_webhook_bp
 
-def create_app():
-    app = Flask(__name__)
-    app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024
-
-    cors_origins = [
+def _cors_origins():
+    origins = [
         "http://localhost:5173",
         "http://127.0.0.1:5173",
         "http://localhost:3000",
     ]
-    frontend_url = os.environ.get("FRONTEND_URL", "").strip("/")
-    if frontend_url and frontend_url not in cors_origins:
-        cors_origins.append(frontend_url)
-    CORS(app, origins=cors_origins)
+    frontend_url = os.environ.get("FRONTEND_URL", "").rstrip("/")
+    if frontend_url:
+        extras = [frontend_url]
+        if frontend_url.startswith("https://www."):
+            extras.append("https://" + frontend_url.removeprefix("https://www."))
+        elif frontend_url.startswith("https://"):
+            extras.append("https://www." + frontend_url.removeprefix("https://"))
+        for origin in extras:
+            if origin and origin not in origins:
+                origins.append(origin)
+    return origins
+
+def create_app():
+    app = Flask(__name__)
+    app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024
+
+    CORS(app, origins=_cors_origins())
 
     limiter.init_app(app)
 
