@@ -24,6 +24,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     z-index: -2;
 }
 
@@ -126,6 +127,14 @@
 @media (max-width: 768px) {
     .sources {
         padding: 60px 5%;
+    }
+
+    .sources-bg-image {
+        /* On narrow/portrait screens, object-fit: cover crops the sides
+           hard, so a center crop can cut off the subject. Nudge this
+           percentage (0% = far left, 100% = far right, "top"/"bottom"
+           also work) until the important part of the photo is in frame. */
+        object-position: 70% center;
     }
 
     .sources-title {
