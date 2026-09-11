@@ -1,7 +1,17 @@
-// components/Hero.tsx
+import img from "../../images/Banana_Tree_road.jpeg";
 const Hero = () => {
     return (
         <section className="Hero" id="hero">
+            <img
+                src={img}
+                alt=""
+                className="hero-bg-image"
+                // This is the LCP element for most users — load it eagerly,
+                // with high priority, so it isn't deprioritized behind other assets.
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+            />
             <div className="hero-content">
                 <h1>CASTILLO LONGEVITY CODE</h1>
                 <p>

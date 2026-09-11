@@ -1,3 +1,4 @@
+import img from "../../images/Riped_Bananas.jpeg"
 interface SourceLink {
     name: string;
     href: string;
@@ -49,6 +50,14 @@ const Sources = () => {
 
     return (
         <section className="sources" id="sources">
+            <img
+                src={img}
+                alt=""
+                className="sources-bg-image"
+                // Below the fold — safe to lazy-load, unlike the hero image.
+                loading="lazy"
+                decoding="async"
+            />
             <div className="sources-container">
                 <span className="sources-subtitle">References & Evidence</span>
                 <h2 className="sources-title">Scientific Sources</h2>
