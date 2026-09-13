@@ -79,7 +79,7 @@ def verify_session(session_id):
                 402,
             )
 
-    except stripe.error.InvalidRequestError:
+    except stripe.InvalidRequestError:
         return jsonify({"verified": False, "error": "Session not found."}), 404
     except Exception as e:
         print(f"[Stripe Verify Error]: {e}")
