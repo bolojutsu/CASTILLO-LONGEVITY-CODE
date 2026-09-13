@@ -17,7 +17,7 @@ else:
     print("[Stripe] WARNING: STRIPE_API_KEY is not set.")
 
 plan_price_id = {
-    "Foundation": "price_1UCmbhHvFcnfvp6wZbt32noQ",
+    "Foundation": "price_1UFJVJHkHT6n1fj7xC6eeLxM",
 }
 
 
