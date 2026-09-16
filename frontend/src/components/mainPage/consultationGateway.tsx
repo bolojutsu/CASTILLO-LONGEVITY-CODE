@@ -116,7 +116,7 @@ const ConsultationGateway = () => {
                                         id="name"
                                         name="name"
                                         required
-                                        placeholder="Enrique Castillo"
+                                        placeholder=""
                                         value={formData.name}
                                         onChange={handleInputChange}
                                         disabled={formStatus.type === 'loading'}
@@ -130,7 +130,7 @@ const ConsultationGateway = () => {
                                         id="email"
                                         name="email"
                                         required
-                                        placeholder="enrique@castillocode.com"
+                                        placeholder=""
                                         value={formData.email}
                                         onChange={handleInputChange}
                                         disabled={formStatus.type === 'loading'}
@@ -144,7 +144,7 @@ const ConsultationGateway = () => {
                                         id="number"
                                         name="number"
                                         required
-                                        placeholder="+1 (555) 000-0000"
+                                        placeholder=""
                                         value={formData.number}
                                         onChange={handleInputChange}
                                         disabled={formStatus.type === "loading"}
