@@ -1,4 +1,5 @@
 import img from "../../images/sources_background.jpg";
+import img from "../../images/sources_background.jpg"
 interface SourceLink {
     name: string;
     href: string;
