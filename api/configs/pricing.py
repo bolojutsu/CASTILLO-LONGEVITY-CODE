@@ -7,18 +7,23 @@ pricing_bp = Blueprint("pricing", __name__)
 stripe.api_key = os.environ.get("STRIPE_API_KEY")
 FRONTEND_URL = os.environ.get("FRONTEND_URL", "http://localhost:5000").rstrip("/")
 
-# Cheap sanity check so it's obvious in the logs which mode you're pointed
-# at — easy to lose track of once you've got test/live keys split across
-# Vercel's Preview/Production env var scopes.
+# Cheap sanity check so it's obvious in the logs which mode you're pointed at
 if stripe.api_key:
     _mode = "LIVE" if stripe.api_key.startswith("sk_live_") else "TEST"
     print(f"[Stripe] Running in {_mode} mode (key prefix: {stripe.api_key[:12]}...)")
 else:
-    print("[Stripe] WARNING: STRIPE_API_KEY is not set.")
+    _mode = "TEST"
+    print("[Stripe] WARNING: STRIPE_API_KEY is not set. Defaulting to TEST mode.")
 
-plan_price_id = {
-    "Foundation": "price_1UFJVJHkHT6n1fj7xC6eeLxM",
-}
+# Conditional mapping based on whether we are running in LIVE or TEST mode
+if _mode == "LIVE":
+    plan_price_id = {
+        "Foundation": os.environ.get("LIVE_PRICE_ID"),
+    }
+else:
+    plan_price_id = {
+        "Foundation": os.environ.get("SANDBOX_PRICE_ID"),
+    }
 
 
 @pricing_bp.route("/create-checkout-session", methods=["POST"])
@@ -30,7 +35,7 @@ def create_checkout_session():
 
         price_id = plan_price_id.get(plan_name)
         if not price_id:
-            return jsonify({"error": f"Invalid plan selected: {plan_name}"}), 400
+            return jsonify({"error": f"Invalid plan selected or price ID not configured for {_mode} mode: {plan_name}"}), 400
 
         checkout_session = stripe.checkout.Session.create(
             payment_method_types=["card"],
@@ -40,7 +45,6 @@ def create_checkout_session():
                     "quantity": 1,
                 },
             ],
-            # If these are recurring monthly billing packages, switch mode to 'subscription'
             mode="payment",
             success_url=f"{FRONTEND_URL}/success?session_id={{CHECKOUT_SESSION_ID}}",
             cancel_url=f"{FRONTEND_URL}/gateway",
