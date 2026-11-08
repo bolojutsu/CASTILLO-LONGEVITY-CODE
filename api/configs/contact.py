@@ -19,6 +19,12 @@ SENDER_EMAIL = _env("RESEND_SENDER_EMAIL")
 @contact_bp.route('/contact', methods=['POST'])
 @limiter.limit("3 per minute; 10 per hour")
 def handle_contact_submission():
+    resend.api_key = _env("RESEND_API_KEY")
+    YOUR_EMAIL = _env("YOUR_EMAIL")
+    SENDER_EMAIL = _env("RESEND_SENDER_EMAIL")
+
+
+
     data = request.get_json()
 
     # 1. check if payload exist
